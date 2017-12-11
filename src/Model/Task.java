@@ -16,6 +16,24 @@ public class Task implements IDable {
     private Qualification qualification;
     private Set<BigInteger> employees;
 
+    public Task() {
+    }
+
+    public Task(BigInteger id) {
+
+        this.id = id;
+    }
+
+    public Task(BigInteger id, Task task) {
+        this.id = id;
+        name = task.name;
+        sprintId=task.sprintId;
+        subtasks.addAll(task.subtasks);
+        estimate=(Calendar) task.estimate.clone();
+        qualification=task.qualification;
+        employees.addAll(task.employees);
+    }
+
     public BigInteger getId() {
         return id;
     }
@@ -74,11 +92,6 @@ public class Task implements IDable {
 
     public void setEmployees(Set<BigInteger> employees) {
         this.employees = employees;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 
     @Override

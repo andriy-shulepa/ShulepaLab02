@@ -1,6 +1,7 @@
 package dao.oracle;
 
 import Model.Customer;
+import dao.DAOUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -78,7 +79,7 @@ public class CustomerDAO extends OracleAbstractDAO<Customer> {
 
     @Override
     BigInteger prepareStatementForInsert(PreparedStatement statement, Customer object) {
-        BigInteger objectID = generateID(1);
+        BigInteger objectID = DAOUtils.generateID(1);
         try {
             statement.setObject(1, objectID);
             statement.setString(2, object.getName());

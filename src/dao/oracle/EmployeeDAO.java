@@ -1,6 +1,7 @@
 package dao.oracle;
 
 import Model.Employee;
+import dao.DAOUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -108,7 +109,7 @@ public class EmployeeDAO extends OracleAbstractDAO<Employee> {
 
     @Override
     BigInteger prepareStatementForInsert(PreparedStatement statement, Employee object) {
-        BigInteger objectID = generateID(1);
+        BigInteger objectID = DAOUtils.generateID(1);
         try {
             statement.setObject(1, objectID);
             statement.setString(2, object.getFirstName() + " " + object.getLastName());

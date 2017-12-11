@@ -1,6 +1,7 @@
 package dao.oracle;
 
 import Model.Sprint;
+import dao.DAOUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -94,7 +95,7 @@ public class SprintDAO extends OracleAbstractDAO<Sprint> {
 
     @Override
     BigInteger prepareStatementForInsert(PreparedStatement statement, Sprint object) {
-        BigInteger objectID = generateID(1);
+        BigInteger objectID = DAOUtils.generateID(1);
         try {
             statement.setObject(1, objectID);
             statement.setString(2, object.getName());

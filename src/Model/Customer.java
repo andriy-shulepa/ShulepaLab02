@@ -19,6 +19,13 @@ public class Customer implements IDable, Cloneable {
         this.id = id;
     }
 
+    public Customer(BigInteger id, Customer customer) {
+        this.id = id;
+        name = customer.name;
+        description = customer.description;
+        projects.addAll(customer.projects);
+    }
+
     public BigInteger getId() {
         return id;
     }
@@ -57,8 +64,4 @@ public class Customer implements IDable, Cloneable {
                 ", Projects ID = " + projects;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

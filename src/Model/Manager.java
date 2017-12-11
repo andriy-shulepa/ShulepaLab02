@@ -18,6 +18,13 @@ public class Manager implements IDable {
         this.id = id;
     }
 
+    public Manager(BigInteger id, Manager manager) {
+        this.id = id;
+        firstName = manager.firstName;
+        lastName = manager.lastName;
+        employees.addAll(manager.employees);
+    }
+
     public BigInteger getId() {
         return id;
     }
@@ -55,8 +62,4 @@ public class Manager implements IDable {
                 ", employees=" + employees;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

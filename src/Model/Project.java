@@ -21,6 +21,15 @@ public class Project implements IDable {
         this.id = id;
     }
 
+    public Project(BigInteger id, Project project) {
+        this.id = id;
+        name = project.name;
+        startDate = (Calendar) project.startDate.clone();
+        endDate = (Calendar) project.endDate.clone();
+        customer_id = project.customer_id;
+        sprints.addAll(project.sprints);
+    }
+
     public Set<BigInteger> getSprints() {
         return sprints;
     }
@@ -80,8 +89,4 @@ public class Project implements IDable {
                 calendar.get(Calendar.YEAR));
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

@@ -20,6 +20,14 @@ public class Sprint implements IDable {
         this.id = id;
     }
 
+    public Sprint(BigInteger id, Sprint sprint) {
+        this.id = id;
+        name = sprint.name;
+        projectId = sprint.projectId;
+        previousSprintId = sprint.previousSprintId;
+        tasks.addAll(sprint.tasks);
+    }
+
     public BigInteger getId() {
         return id;
     }
@@ -67,8 +75,4 @@ public class Sprint implements IDable {
                 ", tasks = " + tasks;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

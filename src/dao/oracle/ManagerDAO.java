@@ -1,6 +1,7 @@
 package dao.oracle;
 
 import Model.Manager;
+import dao.DAOUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -93,7 +94,7 @@ public class ManagerDAO extends OracleAbstractDAO<Manager> {
 
     @Override
     BigInteger prepareStatementForInsert(PreparedStatement statement, Manager object) {
-        BigInteger objectID = generateID(1);
+        BigInteger objectID = DAOUtils.generateID(1);
         try {
             statement.setObject(1, objectID);
             statement.setString(2, object.getFirstName() + " " + object.getLastName());

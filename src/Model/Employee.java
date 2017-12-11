@@ -19,6 +19,14 @@ public class Employee implements IDable {
         this.id = id;
     }
 
+    public Employee(BigInteger id, Employee employee) {
+        this.id = id;
+        firstName = employee.firstName;
+        lastName = employee.lastName;
+        managerId = new BigInteger(employee.managerId.toString());
+        tasks.addAll(employee.tasks);
+    }
+
     public Set<BigInteger> getTasks() {
         return tasks;
     }
@@ -65,8 +73,4 @@ public class Employee implements IDable {
                 ", tasks=" + tasks;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

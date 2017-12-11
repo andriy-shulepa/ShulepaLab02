@@ -1,7 +1,8 @@
 package dao.oracle;
 
-import com.rits.cloning.Cloner;
+
 import dao.GenericDAO;
+import dao.ObjectContainer;
 
 import java.math.BigInteger;
 import java.sql.Connection;
@@ -15,8 +16,7 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
     static final String TABLE_PARAMS = "LAB02.PARAMS";
     static final String OBJECT_ID = "OBJECT_ID";
     static final String OBJECT_NAME = "NAME";
-    private static final long MAX_VALID_TIME = 1_000_000_000L * 60 * 10; //maximum time for data to be valid in cache (10 min)
-    private Map<BigInteger, ObjectContainer> cache = new HashMap<>();
+    private Map<BigInteger, ObjectContainer<E>> cache = new HashMap<>();
 
     abstract String getSelectQuery();
 
@@ -54,7 +54,7 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
             return null;
         }
         E object = list.iterator().next();
-        cache.put(object.getId(), new ObjectContainer(System.nanoTime(), object));
+        cache.put(object.getId(), new ObjectContainer<>(object));
         return object;
     }
 
@@ -73,7 +73,7 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
         }
         if (list != null) {
             for (E item : list) {
-                cache.put(item.getId(), new ObjectContainer(System.nanoTime(), item));
+                cache.put(item.getId(), new ObjectContainer<>(item));
             }
         }
         return list;
@@ -96,7 +96,7 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
             }
             connection.commit();
             connection.setAutoCommit(true);
-            cache.put(object.getId(), new ObjectContainer(System.nanoTime(), object));
+            cache.put(object.getId(), new ObjectContainer<>(object));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -142,36 +142,4 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
         return ID;
     }
 
-    BigInteger generateID(int tableID) {
-        Calendar calendar = new GregorianCalendar();
-
-        String date = String.format("%04d%02d%02d%02d%02d%02d", calendar.get(Calendar.YEAR),
-                (calendar.get(Calendar.MONTH) + 1),
-                calendar.get(Calendar.DAY_OF_MONTH),
-                calendar.get(Calendar.HOUR_OF_DAY),
-                calendar.get(Calendar.MINUTE),
-                calendar.get(Calendar.SECOND));
-        Random random = new Random();
-        int randomValue = random.nextInt(9999);
-        return new BigInteger("" + tableID + date + String.format("%04d", randomValue));
-    }
-
-    private class ObjectContainer {
-        private long timestamp;
-        private E object;
-
-        ObjectContainer(long timestamp, E object) {
-            this.timestamp = timestamp;
-            this.object = object;
-        }
-
-        E getObject() {
-            Cloner cloner = new Cloner();
-            return cloner.deepClone(object);
-        }
-
-        boolean isActual() {
-            return (System.nanoTime() - timestamp) <= MAX_VALID_TIME;
-        }
-    }
 }

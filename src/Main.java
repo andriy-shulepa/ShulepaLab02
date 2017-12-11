@@ -72,11 +72,8 @@ public class Main {
 //        BigInteger employeeID = employeeDAO.insert(employee);
 //        System.out.println(employeeDAO.getByPK(employeeID));
 
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1,"First");
-        System.out.println(map);
-        map.put(1,"Second");
-        System.out.println(map);
+BigInteger bigInteger = new BigInteger("1231");
+        System.out.println(bigInteger);
     }
 
 
