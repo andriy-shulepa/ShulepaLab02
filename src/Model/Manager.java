@@ -54,4 +54,9 @@ public class Manager implements IDable {
                 ", Last Name='" + lastName + '\'' +
                 ", employees=" + employees;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

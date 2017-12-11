@@ -1,5 +1,6 @@
 package dao.oracle;
 
+import com.rits.cloning.Cloner;
 import dao.GenericDAO;
 
 import java.math.BigInteger;
@@ -127,6 +128,7 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
 
     @Override
     public BigInteger insert(E object) {
+
 //        E instance = null;
         String sql = getInsertQuery();
         BigInteger ID = null;
@@ -164,7 +166,8 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
         }
 
         E getObject() {
-            return object;
+            Cloner cloner = new Cloner();
+            return cloner.deepClone(object);
         }
 
         boolean isActual() {

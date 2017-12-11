@@ -75,4 +75,14 @@ public class Task implements IDable {
     public void setEmployees(Set<BigInteger> employees) {
         this.employees = employees;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

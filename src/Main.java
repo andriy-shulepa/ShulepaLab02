@@ -1,6 +1,7 @@
 import Model.*;
 import dao.DAOFactory;
 import dao.GenericDAO;
+import com.rits.cloning.*;
 
 import java.math.BigInteger;
 import java.util.*;
@@ -40,22 +41,22 @@ public class Main {
 //        for (Customer c:customers) {
 //            System.out.println(c);
 //        }
-        GenericDAO<Sprint> sprintDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getSprintDAO();
+    //    GenericDAO<Sprint> sprintDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getSprintDAO();
 //        Sprint sprint = new Sprint();
 //        sprint.setProjectId(new BigInteger("1201712031922255322"));
 //        sprint.setName("First Sprint");
 //        BigInteger sprintID  = sprintDAO.insert(sprint);
 
-        long time  = System.nanoTime();
-       System.out.println(sprintDAO.getByPK(new BigInteger("1201712031946278435")));
-        System.out.println(System.nanoTime()-time);
-        time  = time  = System.nanoTime();
-        System.out.println(sprintDAO.getByPK(new BigInteger("1201712031946278435")));
-        System.out.println(System.nanoTime()-time);
-        time  = System.nanoTime();
-        System.out.println(sprintDAO.getByPK(new BigInteger("1201712031946278435")));
-        System.out.println(System.nanoTime()-time);
-        GenericDAO<Manager> managerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getManagerDAO();
+//        long time  = System.nanoTime();
+//       System.out.println(sprintDAO.getByPK(new BigInteger("1201712031946278435")));
+//        System.out.println(System.nanoTime()-time);
+//        time  = time  = System.nanoTime();
+//        System.out.println(sprintDAO.getByPK(new BigInteger("1201712031946278435")));
+//        System.out.println(System.nanoTime()-time);
+//        time  = System.nanoTime();
+//        System.out.println(sprintDAO.getByPK(new BigInteger("1201712031946278435")));
+//        System.out.println(System.nanoTime()-time);
+//        GenericDAO<Manager> managerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getManagerDAO();
 //        for (Manager m : managerDAO.getAll()) System.out.println(m);
 //        Manager manager = new Manager();
 //        manager.setFirstName("Dmytro");
@@ -71,6 +72,11 @@ public class Main {
 //        BigInteger employeeID = employeeDAO.insert(employee);
 //        System.out.println(employeeDAO.getByPK(employeeID));
 
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1,"First");
+        System.out.println(map);
+        map.put(1,"Second");
+        System.out.println(map);
     }
 
 

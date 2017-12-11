@@ -8,7 +8,7 @@
       </database-info>
       <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
       <user-name>SYSTEM</user-name>
-      <introspection-schemas>*:LAB02</introspection-schemas>
+      <introspection-schemas>*:LAB02,SYSTEM</introspection-schemas>
     </data-source>
   </component>
 </project>

@@ -1,5 +1,6 @@
 package dao.collectoins;
 
+import Model.*;
 import dao.DAOFactory;
 import dao.GenericDAO;
 import dao.dao_interfaces.*;
@@ -8,32 +9,32 @@ public class CollectionsDAOFactory extends DAOFactory {
 
 
     @Override
-    public GenericDAO getCustomerDAO() {
+    public GenericDAO<Customer> getCustomerDAO() {
         return null;
     }
 
     @Override
-    public GenericDAO getEmployeeDAO() {
+    public GenericDAO<Employee> getEmployeeDAO() {
         return null;
     }
 
     @Override
-    public GenericDAO getManagerDAO() {
+    public GenericDAO<Manager> getManagerDAO() {
         return null;
     }
 
     @Override
-    public GenericDAO getProjectDAO() {
+    public GenericDAO<Project> getProjectDAO() {
         return null;
     }
 
     @Override
-    public GenericDAO getSprintDAO() {
+    public GenericDAO<Sprint> getSprintDAO() {
         return null;
     }
 
     @Override
-    public GenericDAO getTaskDAO() {
+    public GenericDAO<Task> getTaskDAO() {
         return null;
     }
 }

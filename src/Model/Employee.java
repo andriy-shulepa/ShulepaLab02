@@ -64,4 +64,9 @@ public class Employee implements IDable {
                 ", manager Id=" + managerId +
                 ", tasks=" + tasks;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

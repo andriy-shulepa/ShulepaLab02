@@ -66,4 +66,9 @@ public class Sprint implements IDable {
                 ", previousSprintId = " + previousSprintId +
                 ", tasks = " + tasks;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

@@ -5,7 +5,7 @@ import dao.oracle.IDable;
 import java.math.BigInteger;
 import java.util.Set;
 
-public class Customer implements IDable {
+public class Customer implements IDable, Cloneable {
     private BigInteger id;
     private String name;
     private String description;
@@ -55,5 +55,10 @@ public class Customer implements IDable {
                 ", Name = " + name +
                 ", Description = " + description +
                 ", Projects ID = " + projects;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

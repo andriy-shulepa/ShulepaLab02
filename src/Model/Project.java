@@ -79,4 +79,9 @@ public class Project implements IDable {
                 calendar.get(Calendar.MONTH) + 1,
                 calendar.get(Calendar.YEAR));
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
