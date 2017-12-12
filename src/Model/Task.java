@@ -1,12 +1,13 @@
 package Model;
 
-import dao.oracle.IDable;
+import dao.IDable;
+import dao.Versionable;
 
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Set;
 
-public class Task implements IDable {
+public class Task implements IDable, Versionable {
     private BigInteger id;
     private String name;
     private BigInteger sprintId;
@@ -15,16 +16,20 @@ public class Task implements IDable {
     private Calendar estimate;
     private Qualification qualification;
     private Set<BigInteger> employees;
+    private int version;
 
     public Task() {
+        version =1;
     }
 
     public Task(BigInteger id) {
-
         this.id = id;
+        version =1;
     }
-
     public Task(BigInteger id, Task task) {
+        this(id,task,1);
+    }
+    public Task(BigInteger id, Task task, int version) {
         this.id = id;
         name = task.name;
         sprintId=task.sprintId;
@@ -32,6 +37,7 @@ public class Task implements IDable {
         estimate=(Calendar) task.estimate.clone();
         qualification=task.qualification;
         employees.addAll(task.employees);
+        this.version = version;
     }
 
     public BigInteger getId() {
@@ -92,6 +98,16 @@ public class Task implements IDable {
 
     public void setEmployees(Set<BigInteger> employees) {
         this.employees = employees;
+    }
+
+    @Override
+    public int getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override

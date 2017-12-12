@@ -1,30 +1,39 @@
 package Model;
 
-import dao.oracle.IDable;
+import dao.IDable;
+import dao.Versionable;
 
 import java.math.BigInteger;
 import java.util.Set;
 
-public class Employee implements IDable {
+public class Employee implements IDable, Versionable {
     private BigInteger id;
     private String firstName;
     private String lastName;
     private BigInteger managerId;
     private Set<BigInteger> tasks;
+    private int version;
 
     public Employee() {
+        version =1;
     }
 
     public Employee(BigInteger id) {
         this.id = id;
+        version = 1;
     }
 
     public Employee(BigInteger id, Employee employee) {
+        this(id,employee,1);
+    }
+
+    public Employee(BigInteger id, Employee employee, int version) {
         this.id = id;
         firstName = employee.firstName;
         lastName = employee.lastName;
         managerId = new BigInteger(employee.managerId.toString());
         tasks.addAll(employee.tasks);
+        this.version = version;
     }
 
     public Set<BigInteger> getTasks() {
@@ -61,6 +70,16 @@ public class Employee implements IDable {
 
     public void setManagerId(BigInteger managerId) {
         this.managerId = managerId;
+    }
+
+    @Override
+    public int getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override

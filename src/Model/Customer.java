@@ -1,29 +1,48 @@
 package Model;
 
-import dao.oracle.IDable;
+import dao.IDable;
+import dao.Versionable;
 
 import java.math.BigInteger;
 import java.util.Set;
 
-public class Customer implements IDable, Cloneable {
+public class Customer implements IDable, Versionable {
     private BigInteger id;
     private String name;
     private String description;
     private Set<BigInteger> projects;
+    private int version;
 
     public Customer() {
+        version =1;
 
     }
 
     public Customer(BigInteger id) {
         this.id = id;
+        version =1;
     }
 
     public Customer(BigInteger id, Customer customer) {
+        this(id,customer,1);
+    }
+
+    public Customer(BigInteger id, Customer customer, int version) {
         this.id = id;
         name = customer.name;
         description = customer.description;
         projects.addAll(customer.projects);
+        this.version = version;
+    }
+
+    @Override
+    public int getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version=version;
     }
 
     public BigInteger getId() {

@@ -1,9 +1,6 @@
 package dao.collectoins;
 
-import dao.DAOUtils;
-import dao.GenericDAO;
-import dao.ObjectContainer;
-import dao.oracle.IDable;
+import dao.*;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -11,7 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class CollectionsAbsractDAO<E extends IDable> implements GenericDAO<E> {
+public abstract class CollectionsAbsractDAO<E extends IDable & Versionable> implements GenericDAO<E> {
     protected Map<BigInteger, ObjectContainer<E>> pool = new HashMap<>();
 
     @Override
@@ -39,7 +36,11 @@ public abstract class CollectionsAbsractDAO<E extends IDable> implements Generic
     protected abstract E cloneObjectWithId(BigInteger id, E object);
 
     @Override
-    public void update(E object) {
+    public void update(E object) throws OutdatedObjectVersionException {
+
+        if (object.getVersion()!=pool.get(object.getId()).getObject().getVersion()) {
+            throw new OutdatedObjectVersionException();
+        }
         pool.put(object.getId(), new ObjectContainer<>(object));
     }
 

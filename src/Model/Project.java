@@ -1,33 +1,42 @@
 package Model;
 
-import dao.oracle.IDable;
+import dao.IDable;
+import dao.Versionable;
 
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Set;
 
-public class Project implements IDable {
+public class Project implements IDable, Versionable {
     private BigInteger id;
     private String name;
     private Calendar startDate;
     private Calendar endDate;
-    private BigInteger customer_id;
+    private BigInteger customerId;
     private Set<BigInteger> sprints;
+    private int version;
 
     public Project() {
+        version =1;
     }
 
     public Project(BigInteger id) {
         this.id = id;
+        version =1;
     }
 
     public Project(BigInteger id, Project project) {
+        this(id,project,1);
+    }
+
+    public Project(BigInteger id, Project project, int version) {
         this.id = id;
         name = project.name;
         startDate = (Calendar) project.startDate.clone();
         endDate = (Calendar) project.endDate.clone();
-        customer_id = project.customer_id;
+        customerId = project.customerId;
         sprints.addAll(project.sprints);
+        this.version = version;
     }
 
     public Set<BigInteger> getSprints() {
@@ -67,11 +76,21 @@ public class Project implements IDable {
     }
 
     public BigInteger getCustomerId() {
-        return customer_id;
+        return customerId;
     }
 
     public void setCustomerId(BigInteger customer_id) {
-        this.customer_id = customer_id;
+        this.customerId = customer_id;
+    }
+
+    @Override
+    public int getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override
@@ -79,7 +98,7 @@ public class Project implements IDable {
         return "Project with Name = " + name +
                 ", Start Date = " + getDate(startDate) +
                 ", End Date = " + getDate(endDate) +
-                ", Customer ID = " + customer_id +
+                ", Customer ID = " + customerId +
                 ", Sprints ID = " + sprints;
     }
 

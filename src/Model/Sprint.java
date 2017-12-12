@@ -1,31 +1,39 @@
 package Model;
 
-import dao.oracle.IDable;
+import dao.IDable;
+import dao.Versionable;
 
 import java.math.BigInteger;
 import java.util.Set;
 
-public class Sprint implements IDable {
+public class Sprint implements IDable, Versionable {
     private BigInteger id;
     private String name;
     private BigInteger projectId;
     private BigInteger previousSprintId;
     private Set<BigInteger> tasks;
+    private int version;
 
     public Sprint() {
+        version =1;
     }
 
     public Sprint(BigInteger id) {
-
         this.id = id;
+        version =1;
     }
 
     public Sprint(BigInteger id, Sprint sprint) {
+        this(id,sprint,1);
+    }
+
+    public Sprint(BigInteger id, Sprint sprint, int version) {
         this.id = id;
         name = sprint.name;
         projectId = sprint.projectId;
         previousSprintId = sprint.previousSprintId;
         tasks.addAll(sprint.tasks);
+        this.version = version;
     }
 
     public BigInteger getId() {
@@ -63,6 +71,16 @@ public class Sprint implements IDable {
 
     public void setTasks(Set<BigInteger> tasks) {
         this.tasks = tasks;
+    }
+
+    @Override
+    public int getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override

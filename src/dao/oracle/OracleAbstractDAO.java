@@ -1,17 +1,18 @@
 package dao.oracle;
 
 
-import dao.GenericDAO;
-import dao.ObjectContainer;
+import dao.*;
 
 import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<E> {
+public abstract class OracleAbstractDAO<E extends IDable & Versionable> implements GenericDAO<E> {
     static final String TABLE_OBJECTS = "LAB02.OBJECTS";
     static final String TABLE_PARAMS = "LAB02.PARAMS";
     static final String OBJECT_ID = "OBJECT_ID";
@@ -80,7 +81,10 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
     }
 
     @Override
-    public void update(E object) {
+    public void update(E object) throws OutdatedObjectVersionException {
+        if (object.getVersion() != cache.get(object.getId()).getObject().getVersion()) {
+            throw new OutdatedObjectVersionException();
+        }
         Map<String, String> sql = getUpdateQuery();
         try (Connection connection = OracleDAOFactory.createConnection()) {
             connection.setAutoCommit(false);
@@ -96,7 +100,7 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
             }
             connection.commit();
             connection.setAutoCommit(true);
-            cache.put(object.getId(), new ObjectContainer<>(object));
+            cache.get(object.getId()).updateObject(object);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -128,8 +132,6 @@ public abstract class OracleAbstractDAO<E extends IDable> implements GenericDAO<
 
     @Override
     public BigInteger insert(E object) {
-
-//        E instance = null;
         String sql = getInsertQuery();
         BigInteger ID = null;
         try (Connection connection = OracleDAOFactory.createConnection();

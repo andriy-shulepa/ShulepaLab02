@@ -1,4 +1,4 @@
-package dao.oracle;
+package dao;
 
 import java.math.BigInteger;
 
