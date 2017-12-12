@@ -32,32 +32,32 @@ public class OracleDAOFactory extends DAOFactory {
     }
 
     @Override
-    public GenericDAO<Customer> getCustomerDAO() {
-        return new CustomerDAO();
+    public GenericDAO<Customer> getCustomerDAO(OracleAbstractDAO.Roles role) {
+        return new CustomerDAO(role);
     }
 
     @Override
-    public GenericDAO<Employee> getEmployeeDAO() {
-        return new EmployeeDAO();
+    public GenericDAO<Employee> getEmployeeDAO(OracleAbstractDAO.Roles role) {
+        return new EmployeeDAO(role);
     }
 
     @Override
-    public GenericDAO<Manager> getManagerDAO() {
-        return new ManagerDAO();
+    public GenericDAO<Manager> getManagerDAO(OracleAbstractDAO.Roles role) {
+        return new ManagerDAO(role);
     }
 
     @Override
-    public GenericDAO<Project> getProjectDAO() {
-        return new ProjectDAO();
+    public GenericDAO<Project> getProjectDAO(OracleAbstractDAO.Roles role) {
+        return new ProjectDAO(role);
     }
 
     @Override
-    public GenericDAO<Sprint> getSprintDAO() {
-        return new SprintDAO();
+    public GenericDAO<Sprint> getSprintDAO(OracleAbstractDAO.Roles role) {
+        return new SprintDAO(role);
     }
 
     @Override
-    public GenericDAO<Task> getTaskDAO() {
-        return new TaskDAO();
+    public GenericDAO<Task> getTaskDAO(OracleAbstractDAO.Roles role) {
+        return new TaskDAO(role);
     }
 }

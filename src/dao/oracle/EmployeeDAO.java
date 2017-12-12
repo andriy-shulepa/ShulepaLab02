@@ -19,6 +19,10 @@ public class EmployeeDAO extends OracleAbstractDAO<Employee> {
     private static final String EMPLOYEE_ID = "Employee ID";
     private static final String TASK_ID = "Task ID";
 
+    public EmployeeDAO(Roles role) {
+        super(role);
+    }
+
     @Override
     String getSelectQuery() {
         return "select o.OBJECT_ID, o.NAME,  fn_p.TEXT_VALUE as \"" + ATTRIBUTE_FIRST_NAME + "\", ln_p.TEXT_VALUE as \"" + ATTRIBUTE_LAST_NAME + "\", mgr_p.NUMBER_VALUE as \"" + ATTRIBUTE_MANAGER_ID + "\", tsk_p.OBJECT_ID as \"" + TASK_ID + "\"\n" +
@@ -194,5 +198,9 @@ public class EmployeeDAO extends OracleAbstractDAO<Employee> {
         }
 
         return employeeSet;
+    }
+    @Override
+    String getObjectType() {
+        return OBJECT_TYPE;
     }
 }

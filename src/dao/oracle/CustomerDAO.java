@@ -16,6 +16,10 @@ public class CustomerDAO extends OracleAbstractDAO<Customer> {
     private static final String CUSTOMER_ID = "Customer ID";
     private static final String PROJECT_ID = "Project ID";
 
+    public CustomerDAO(Roles role) {
+        super(role);
+    }
+
 
     @Override
     String getSelectQuery() {
@@ -152,6 +156,11 @@ public class CustomerDAO extends OracleAbstractDAO<Customer> {
         }
 
         return customerSet;
+    }
+
+    @Override
+    String getObjectType() {
+        return OBJECT_TYPE;
     }
 
 

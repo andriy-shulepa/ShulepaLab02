@@ -10,6 +10,12 @@ import java.util.Set;
 
 public class TaskDAO extends OracleAbstractDAO<Task> {
 
+    private static final String OBJECT_TYPE = "Task";
+
+    public TaskDAO(Roles role) {
+        super(role);
+    }
+
     @Override
     String getSelectQuery() {
         return null;
@@ -49,5 +55,10 @@ public class TaskDAO extends OracleAbstractDAO<Task> {
     @Override
     Set<Task> parseResultSet(ResultSet rs) {
         return null;
+    }
+
+    @Override
+    String getObjectType() {
+        return OBJECT_TYPE;
     }
 }

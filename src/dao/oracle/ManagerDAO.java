@@ -18,6 +18,10 @@ public class ManagerDAO extends OracleAbstractDAO<Manager> {
     private static final String MANAGER_ID = "Manager ID";
     private static final String EMPLOYEE_ID = "Employee ID";
 
+    public ManagerDAO(Roles role) {
+        super(role);
+    }
+
     @Override
     String getSelectQuery() {
         return "select o.OBJECT_ID, o.NAME,  fn_p.TEXT_VALUE as \"" + ATTRIBUTE_FIRST_NAME + "\", ln_p.TEXT_VALUE as \"" + ATTRIBUTE_LAST_NAME + "\", emp_p.OBJECT_ID as \"" + EMPLOYEE_ID + "\"\n" +
@@ -173,5 +177,10 @@ public class ManagerDAO extends OracleAbstractDAO<Manager> {
 
         return customerSet;
 
+    }
+
+    @Override
+    String getObjectType() {
+        return OBJECT_TYPE;
     }
 }

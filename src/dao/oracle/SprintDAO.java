@@ -18,6 +18,10 @@ public class SprintDAO extends OracleAbstractDAO<Sprint> {
     private static final String SPRINT_ID = "Sprint ID";
     private static final String TASK_ID = "Task ID";
 
+    public SprintDAO(Roles role) {
+        super(role);
+    }
+
     @Override
     String getSelectQuery() {
         return "select /*+ RESULT_CACHE */ o.OBJECT_ID, o.NAME,  prs_p.NUMBER_VALUE as \"" + ATTRIBUTE_PREVIOUS_SPRINT_ID + "\", prj_p.NUMBER_VALUE as \"" + ATTRIBUTE_PROJECT_ID + "\", tsk_p.OBJECT_ID as \"" + TASK_ID + "\"\n" +
@@ -177,5 +181,9 @@ public class SprintDAO extends OracleAbstractDAO<Sprint> {
         }
 
         return sprintSet;
+    }
+    @Override
+    String getObjectType() {
+        return OBJECT_TYPE;
     }
 }

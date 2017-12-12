@@ -17,8 +17,21 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
     static final String TABLE_PARAMS = "LAB02.PARAMS";
     static final String OBJECT_ID = "OBJECT_ID";
     static final String OBJECT_NAME = "NAME";
+    private Roles ROLE;
     private Map<BigInteger, ObjectContainer<E>> cache = new HashMap<>();
 
+    private final String readGrantQuery = "select ot.read \"Object Type Grant\", o.read \"Object Grant\" \n" +
+            "from lab02.object_type_grants ot\n" +
+            "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
+            "where ot.role = '"+ROLE+"'  and ot.OBJECT_TYPE_ID = (select object_type_id from lab02.object_types where name ='"+getObjectType()+"')";
+
+    private final String writeGrantQuery = "select ot.write \"Object Type Grant\", o.write \"Object Grant\" \n" +
+            "from lab02.object_type_grants ot\n" +
+            "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
+            "where ot.role = '"+ROLE+"'  and ot.OBJECT_TYPE_ID = (Select object_type_id from lab02.object_types where name ='"+getObjectType()+"')";
+    public OracleAbstractDAO (Roles role) {
+    this.ROLE = role;
+    }
     abstract String getSelectQuery();
 
     abstract String getInsertQuery();
@@ -35,8 +48,12 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
 
     abstract Set<E> parseResultSet(ResultSet rs);
 
+    abstract String getObjectType();
+
     @Override
-    public E getByPK(BigInteger id) {
+    public E getByPK(BigInteger id) throws IllegalRoleException {
+        checkReadGrant(id.toString());
+
         if (cache.containsKey(id) && cache.get(id).isActual()) {
             return cache.get(id).getObject();
         }
@@ -61,7 +78,12 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
 
 
     @Override
-    public Set<E> getAll() {
+    public Set<E> getAll() throws IllegalRoleException {
+        checkReadGrant("(select o.OBJECT_ID" +
+                " from lab02.objects" +
+                " where OBJECT_TYPE_ID = (select OBJECT_TYPE_ID" +
+                " from lab02.object_types" +
+                " where name = '"+getObjectType()+"') )");
         Set<E> list = null;
         String sql = getSelectQuery();
         sql += " ORDER BY o.OBJECT_ID";
@@ -81,10 +103,14 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
     }
 
     @Override
-    public void update(E object) throws OutdatedObjectVersionException {
+    public void update(E object) throws OutdatedObjectVersionException, IllegalRoleException {
+        checkWriteGrant(object.getId());
+
         if (object.getVersion() != cache.get(object.getId()).getObject().getVersion()) {
             throw new OutdatedObjectVersionException();
         }
+
+
         Map<String, String> sql = getUpdateQuery();
         try (Connection connection = OracleDAOFactory.createConnection()) {
             connection.setAutoCommit(false);
@@ -107,7 +133,8 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
     }
 
     @Override
-    public void delete(E object) {
+    public void delete(E object) throws IllegalRoleException {
+        checkWriteGrant(object.getId());
         Map<String, String> sql = getDeleteQuery();
         try (Connection connection = OracleDAOFactory.createConnection()) {
             connection.setAutoCommit(false);
@@ -131,7 +158,8 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
     }
 
     @Override
-    public BigInteger insert(E object) {
+    public BigInteger insert(E object) throws IllegalRoleException {
+        checkWriteGrant(object.getId());
         String sql = getInsertQuery();
         BigInteger ID = null;
         try (Connection connection = OracleDAOFactory.createConnection();
@@ -142,6 +170,44 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
             e.printStackTrace();
         }
         return ID;
+    }
+
+    private void checkWriteGrant (BigInteger id)throws IllegalRoleException {
+        try (Connection connection = OracleDAOFactory.createConnection();
+             PreparedStatement statement = connection.prepareStatement(writeGrantQuery)) {
+            statement.setObject(1,id);
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+
+            if(rs.getInt("Object Grant")==-1 ||
+                    rs.getInt("Object Type Grant")!=1) {
+                throw new IllegalRoleException();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private void checkReadGrant (String param) throws IllegalRoleException{
+        try (Connection connection = OracleDAOFactory.createConnection();
+             PreparedStatement statement = connection.prepareStatement(readGrantQuery)) {
+            statement.setObject(1, param);
+                    ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                if (rs.getInt("Object Grant") == -1 ||
+                        rs.getInt("Object Type Grant") != 1) {
+                    throw new IllegalRoleException();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public enum Roles {
+        Administrator,
+        Customer,
+        Employee,
+        ProjectManager
     }
 
 }

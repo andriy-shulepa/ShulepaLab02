@@ -20,6 +20,10 @@ public class ProjectDAO extends OracleAbstractDAO<Project> {
     private static final String PROJECT_ID = "Project ID";
     private static final String SPRINT_ID = "Sprint ID";
 
+    public ProjectDAO(Roles role) {
+        super(role);
+    }
+
 
     @Override
     String getSelectQuery() {
@@ -214,5 +218,9 @@ public class ProjectDAO extends OracleAbstractDAO<Project> {
         }
 
         return projectSet;
+    }
+    @Override
+    String getObjectType() {
+        return OBJECT_TYPE;
     }
 }
