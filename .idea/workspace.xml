@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afd0471b-f4a7-4af9-85f0-914c7e626fe8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/IllegalRoleException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/DAOFactory.java" afterPath="$PROJECT_DIR$/src/dao/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/GenericDAO.java" afterPath="$PROJECT_DIR$/src/dao/GenericDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/collectoins/CollectionsDAOFactory.java" afterPath="$PROJECT_DIR$/src/dao/collectoins/CollectionsDAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/OracleDAOFactory.java" afterPath="$PROJECT_DIR$/src/dao/oracle/OracleDAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/SprintDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/SprintDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/TaskDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/TaskDAO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,7 +44,7 @@
       <file leaf-file-name="CustomerDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2065">
+            <state relative-caret-position="144">
               <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
               <folding />
             </state>
@@ -66,12 +54,14 @@
       <file leaf-file-name="OracleAbstractDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="97" column="31" lean-forward="false" selection-start-line="97" selection-start-column="31" selection-end-line="97" selection-end-column="31" />
+            <state relative-caret-position="18">
+              <caret line="86" column="27" lean-forward="false" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1513119718116" expanded="true" signature="704:1057" ph="select ot.re... object_type_grants" />
-                <marker date="1513119718116" expanded="true" signature="977:1056" ph="select objec... object_types" />
+                <marker date="1513120235518" expanded="true" signature="704:1057" ph="select ot.re... object_type_grants" />
+                <marker date="1513120235518" expanded="true" signature="977:1056" ph="select objec... object_types" />
+                <marker date="1513120235518" expanded="true" signature="1105:1460" ph="select ot.wr... object_type_grants" />
+                <marker date="1513120235518" expanded="true" signature="1380:1459" ph="Select objec... object_types" />
               </folding>
             </state>
           </provider>
@@ -81,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/dao/GenericDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -228,6 +218,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -280,9 +272,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,12 +451,14 @@
       <workItem from="1512922867634" duration="1149000" />
       <workItem from="1513002706118" duration="9612000" />
       <workItem from="1513026443468" duration="1284000" />
-      <workItem from="1513104398640" duration="8704000" />
+      <workItem from="1513104398640" duration="9847000" />
+      <workItem from="1513168565943" duration="34000" />
+      <workItem from="1513179503902" duration="228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114502000" />
+    <option name="totallyTimeSpent" value="115907000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -479,7 +471,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="73" y="16" width="1305" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -488,19 +479,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30628482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31742242" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001592" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -841,8 +832,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2065">
+        <state relative-caret-position="144">
           <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/GenericDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -855,22 +854,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/GenericDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="97" column="31" lean-forward="false" selection-start-line="97" selection-start-column="31" selection-end-line="97" selection-end-column="31" />
+        <state relative-caret-position="18">
+          <caret line="86" column="27" lean-forward="false" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1513119718116" expanded="true" signature="704:1057" ph="select ot.re... object_type_grants" />
-            <marker date="1513119718116" expanded="true" signature="977:1056" ph="select objec... object_types" />
+            <marker date="1513120235518" expanded="true" signature="704:1057" ph="select ot.re... object_type_grants" />
+            <marker date="1513120235518" expanded="true" signature="977:1056" ph="select objec... object_types" />
+            <marker date="1513120235518" expanded="true" signature="1105:1460" ph="select ot.wr... object_type_grants" />
+            <marker date="1513120235518" expanded="true" signature="1380:1459" ph="Select objec... object_types" />
           </folding>
         </state>
       </provider>
