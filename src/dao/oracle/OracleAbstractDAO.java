@@ -1,77 +1,198 @@
 package dao.oracle;
 
 
+import Model.AbstractDAOObject;
 import dao.*;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public abstract class OracleAbstractDAO<E extends IDable & Versionable> implements GenericDAO<E> {
-    static final String TABLE_OBJECTS = "LAB02.OBJECTS";
-    static final String TABLE_PARAMS = "LAB02.PARAMS";
-    static final String OBJECT_ID = "OBJECT_ID";
-    static final String OBJECT_NAME = "NAME";
+public abstract class OracleAbstractDAO<E extends AbstractDAOObject> implements GenericDAO<E> {
+    private static final String TABLE_OBJECTS = "LAB02.OBJECTS";
+    private static final String TABLE_PARAMS = "LAB02.PARAMS";
+    private static final String OBJECT_ID = "OBJECT_ID";
+
     private Roles ROLE;
-    private Map<BigInteger, ObjectContainer<E>> cache = new HashMap<>();
-
     private final String readGrantQuery = "select ot.read \"Object Type Grant\", o.read \"Object Grant\" \n" +
             "from lab02.object_type_grants ot\n" +
             "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
-            "where ot.role = '"+ROLE+"'  and ot.OBJECT_TYPE_ID = (select object_type_id from lab02.object_types where name ='"+getObjectType()+"')";
-
+            "where ot.role = '" + ROLE + "'  and ot.OBJECT_TYPE_ID = (select object_type_id from lab02.object_types where name ='" + getObjectType() + "')";
     private final String writeGrantQuery = "select ot.write \"Object Type Grant\", o.write \"Object Grant\" \n" +
             "from lab02.object_type_grants ot\n" +
             "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
-            "where ot.role = '"+ROLE+"'  and ot.OBJECT_TYPE_ID = (Select object_type_id from lab02.object_types where name ='"+getObjectType()+"')";
-    public OracleAbstractDAO (Roles role) {
-    this.ROLE = role;
+            "where ot.role = '" + ROLE + "'  and ot.OBJECT_TYPE_ID = (Select object_type_id from lab02.object_types where name ='" + getObjectType() + "')";
+    private Map<BigInteger, ObjectContainer<E>> cache = new HashMap<>();
+
+    public OracleAbstractDAO(Roles role) {
+        this.ROLE = role;
     }
-    abstract String getSelectQuery();
 
-    abstract String getInsertQuery();
 
-    abstract Map<String, String> getUpdateQuery();
+    private String getSelectQuery() {
+        return "select o.object_id, attr.name, p.VALUE\n" +
+                "from lab02.objects o\n" +
+                "join lab02.attributes attr on attr.object_type_id = (Select object_type_id from lab02.object_types where name =  '" + getObjectType() + "')\n" +
+                "left join lab02.params p on p.attribute_id = attr.attribute_id\n" +
+                "and p.object_id = o.object_id";
+    }
 
-    abstract Map<String, String> getDeleteQuery();
+    private Map<String, String> getInsertQuery(Set<String> attributesSet) {
+        Map<String, String> queries = new HashMap<>();
+        String objectInsert = "INSERT INTO LAB02.OBJECTS (NAME, OBJECT_ID, OBJECT_TYPE_ID) VALUES (?, ?, " +
+                "(SELECT OBJECT_TYPE_ID " +
+                "FROM LAB02.OBJECT_TYPES " +
+                "WHERE NAME=" + "\'" + getObjectType() + "\'" + ")) ";
+        queries.put(TABLE_OBJECTS, objectInsert);
+        for (String attribute : attributesSet) {
+            String attributeInsert = "INSERT INTO LAB02.PARAMS (VALUE, OBJECT_ID, ATTRIBUTE_ID) VALUES (?, ?, " +
+                    "(SELECT ATTRIBUTE_ID " +
+                    "FROM LAB02.ATTRIBUTES " +
+                    "WHERE NAME = " + "\'" + attribute + "\'" + " AND OBJECT_TYPE_ID = " +
+                    "(SELECT OBJECT_TYPE_ID " +
+                    "FROM LAB02.OBJECT_TYPES " +
+                    "WHERE NAME=" + "\'" + getObjectType() + "\'" + "))) ";
+            queries.put(attribute, attributeInsert);
+        }
 
-    abstract BigInteger prepareStatementForInsert(PreparedStatement statement, E object);
+        return queries;
+    }
 
-    abstract void prepareStatementForUpdate(Map<String, PreparedStatement> statements, E object);
+    private Map<String, String> getUpdateQuery(Set<String> attributesSet) {
+        Map<String, String> queries = new HashMap<>();
+        String objectUpdate = "UPDATE LAB02.OBJECTS \n" +
+                "SET NAME = ?\n" +
+                "WHERE OBJECT_ID = ?";
+        queries.put(TABLE_OBJECTS, objectUpdate);
+        for (String attribute : attributesSet) {
+            String attributeUpdate = "UPDATE LAB02.PARAMS\n" +
+                    "SET VALUE = ?" +
+                    "WHERE OBJECT_ID = ? AND ATTRIBUTE_ID = " +
+                    "(SELECT ATTRIBUTE_ID FROM LAB02.ATTRIBUTES WHERE NAME = \'" + attribute + "\')";
+            queries.put(attribute, attributeUpdate);
+        }
 
-    abstract void prepareStatementForDelete(Map<String, PreparedStatement> statements, E object);
+        return queries;
+    }
 
-    abstract Set<E> parseResultSet(ResultSet rs);
+    private Map<String, String> getDeleteQuery() {
+        String objectDelete = "DELETE LAB02.OBJECTS \n" +
+                "WHERE OBJECT_ID = ?";
+        String paramsDelete = "DELETE LAB02.PARAMS\n" +
+                "WHERE OBJECT_ID = ?";
+        Map<String, String> queries = new HashMap<>();
+        queries.put(TABLE_OBJECTS, objectDelete);
+        queries.put(TABLE_PARAMS, paramsDelete);
+        return queries;
+    }
+
+    private BigInteger prepareStatementForInsert(Map<String, PreparedStatement> statements, E object) {
+        BigInteger objectID = DAOUtils.generateID(1);
+        Set<String> keys = statements.keySet();
+        try {
+            for (String key : keys) {
+                PreparedStatement statement = statements.get(key);
+                if (key.equals(TABLE_OBJECTS)) {
+                    statement.setObject(1, object.getName());
+                } else {
+                    statement.setObject(1, object.getAttribute(key));
+                }
+
+                statement.setObject(2, objectID);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return objectID;
+    }
+
+    private void prepareStatementForUpdate(Map<String, PreparedStatement> statements, E object) {
+        Set<String> keys = statements.keySet();
+        try {
+            for (String key : keys) {
+                PreparedStatement statement = statements.get(key);
+                if (key.equals(TABLE_OBJECTS)) {
+                    statement.setObject(1, object.getName());
+                } else {
+                    statement.setObject(1, object.getAttribute(key));
+                }
+
+                statement.setObject(2, object.getId());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void prepareStatementForDelete(Map<String, PreparedStatement> statements, E object) {
+        Set<String> keySet = statements.keySet();
+        try {
+            for (String key : keySet) {
+                PreparedStatement statement = statements.get(key);
+                statement.setObject(1, object.getId());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Set<E> parseResultSet(ResultSet rs) {
+        Set<E> objectsSet = new LinkedHashSet<>();
+        E object = null;
+        BigInteger previousID = null;
+        try {
+            while (rs.next()) {
+                BigInteger currentID = ((BigDecimal) rs.getObject(OBJECT_ID)).toBigInteger();
+                if (!currentID.equals(previousID)) {
+                    if (object != null) {
+                        objectsSet.add(object);
+                    }
+                    object = getObject(currentID);
+                }
+                String attributeName = rs.getString("NAME");
+                String attributeValue = rs.getString("VALUE");
+                object.setAttribute(attributeName, attributeValue);
+                previousID = currentID;
+            }
+            objectsSet.add(object);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return objectsSet;
+    }
 
     abstract String getObjectType();
+
+    abstract E getObject(BigInteger id);
 
     @Override
     public E getByPK(BigInteger id) throws IllegalRoleException {
         checkReadGrant(id.toString());
-
         if (cache.containsKey(id) && cache.get(id).isActual()) {
             return cache.get(id).getObject();
         }
-        Set<E> list = null;
+        Set<E> set = null;
         String sql = getSelectQuery();
-        sql += " WHERE o.object_id = ?";
+        sql += " WHERE o.object_id = ? \n" +
+                "ORDER BY p.attribute_id";
         try (Connection connection = OracleDAOFactory.createConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setObject(1, id);
             ResultSet rs = statement.executeQuery();
-            list = parseResultSet(rs);
+            set = parseResultSet(rs);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (list == null || list.size() == 0) {
+        if (set == null || set.size() == 0) {
             return null;
         }
-        E object = list.iterator().next();
+        E object = set.iterator().next();
         cache.put(object.getId(), new ObjectContainer<>(object));
         return object;
     }
@@ -83,10 +204,11 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
                 " from lab02.objects" +
                 " where OBJECT_TYPE_ID = (select OBJECT_TYPE_ID" +
                 " from lab02.object_types" +
-                " where name = '"+getObjectType()+"') )");
+                " where name = '" + getObjectType() + "') )");
         Set<E> list = null;
         String sql = getSelectQuery();
-        sql += " ORDER BY o.OBJECT_ID";
+        sql += " where o.object_type_id = (Select object_type_id from lab02.object_types where name ='" + getObjectType() + "')" +
+                " ORDER BY o.OBJECT_ID";
         try (Connection connection = OracleDAOFactory.createConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
@@ -103,6 +225,35 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
     }
 
     @Override
+    public BigInteger insert(E object) throws IllegalRoleException {
+        checkWriteGrant(object.getId());
+
+        Map<String, String> sql = getInsertQuery(object.getAttributesSet());
+
+        BigInteger ID = null;
+
+        try (Connection connection = OracleDAOFactory.createConnection()) {
+            connection.setAutoCommit(false);
+
+            Map<String, PreparedStatement> statements = new HashMap<>();
+            for (String key : sql.keySet()) {
+                statements.put(key, connection.prepareStatement(sql.get(key)));
+            }
+            ID = prepareStatementForInsert(statements, object);
+
+            for (PreparedStatement statement : statements.values()) {
+                statement.executeUpdate();
+            }
+            connection.commit();
+
+            connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ID;
+    }
+
+    @Override
     public void update(E object) throws OutdatedObjectVersionException, IllegalRoleException {
         checkWriteGrant(object.getId());
 
@@ -111,7 +262,7 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
         }
 
 
-        Map<String, String> sql = getUpdateQuery();
+        Map<String, String> sql = getUpdateQuery(object.getAttributesSet());
         try (Connection connection = OracleDAOFactory.createConnection()) {
             connection.setAutoCommit(false);
 
@@ -157,41 +308,51 @@ public abstract class OracleAbstractDAO<E extends IDable & Versionable> implemen
         }
     }
 
-    @Override
-    public BigInteger insert(E object) throws IllegalRoleException {
-        checkWriteGrant(object.getId());
-        String sql = getInsertQuery();
-        BigInteger ID = null;
+    public Set<BigInteger> selectMultipleAttribute(String fromTable, String foreignAttributeName, BigInteger id) {
+        String query = "select o.object_id\n" +
+                "from lab02.objects o\n" +
+                "join lab02.attributes attr on attr.object_type_id = (Select object_type_id from lab02.object_types where name ='" + fromTable + "')\n" +
+                "left join lab02.params p on p.attribute_id = attr.attribute_id\n" +
+                " and p.object_id = o.object_id\n" +
+                " where o.object_type_id = (Select object_type_id from lab02.object_types where name ='" + fromTable + "')\n" +
+                " and attr.name = '" + foreignAttributeName + "' and p.VALUE = '" + id.toString() + "'";
+
+        Set<BigInteger> attributeSet = new HashSet<>();
         try (Connection connection = OracleDAOFactory.createConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            ID = prepareStatementForInsert(statement, object);
-            statement.executeUpdate();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                attributeSet.add(new BigInteger(resultSet.getString(1)));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ID;
+        return attributeSet;
     }
 
-    private void checkWriteGrant (BigInteger id)throws IllegalRoleException {
+
+    private void checkWriteGrant(BigInteger id) throws IllegalRoleException {
         try (Connection connection = OracleDAOFactory.createConnection();
              PreparedStatement statement = connection.prepareStatement(writeGrantQuery)) {
-            statement.setObject(1,id);
+            statement.setObject(1, id);
             ResultSet rs = statement.executeQuery();
-            rs.next();
-
-            if(rs.getInt("Object Grant")==-1 ||
-                    rs.getInt("Object Type Grant")!=1) {
-                throw new IllegalRoleException();
+            while (rs.next()) {
+                if (rs.getInt("Object Grant") == -1 ||
+                        rs.getInt("Object Type Grant") != 1) {
+                    throw new IllegalRoleException();
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    private void checkReadGrant (String param) throws IllegalRoleException{
+
+    private void checkReadGrant(String param) throws IllegalRoleException {
         try (Connection connection = OracleDAOFactory.createConnection();
              PreparedStatement statement = connection.prepareStatement(readGrantQuery)) {
             statement.setObject(1, param);
-                    ResultSet rs = statement.executeQuery();
+            ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 if (rs.getInt("Object Grant") == -1 ||
                         rs.getInt("Object Type Grant") != 1) {

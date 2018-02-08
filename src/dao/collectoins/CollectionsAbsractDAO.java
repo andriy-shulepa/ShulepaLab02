@@ -1,6 +1,10 @@
 package dao.collectoins;
 
-import dao.*;
+import Model.AbstractDAOObject;
+import dao.DAOUtils;
+import dao.GenericDAO;
+import dao.ObjectContainer;
+import dao.OutdatedObjectVersionException;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -8,7 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class CollectionsAbsractDAO<E extends IDable & Versionable> implements GenericDAO<E> {
+public abstract class CollectionsAbsractDAO<E extends AbstractDAOObject> implements GenericDAO<E> {
     protected Map<BigInteger, ObjectContainer<E>> pool = new HashMap<>();
 
     @Override

@@ -1,41 +1,39 @@
 package Model;
 
-import dao.IDable;
-import dao.Versionable;
-
 import java.math.BigInteger;
 import java.util.Set;
 
-public class Manager implements IDable, Versionable {
-    private BigInteger id;
+public class Manager extends AbstractDAOObject {
+
+    static {
+        attributes.add("First Name");
+        attributes.add("Last Name");
+    }
+
     private String firstName;
     private String lastName;
     private Set<BigInteger> employees;
-    private int version;
 
     public Manager() {
+        super();
     }
 
     public Manager(BigInteger id) {
-        this.id = id;
-        version =1;
+        super(id);
     }
 
     public Manager(BigInteger id, Manager manager) {
-        this(id,manager,1);
+        this(id, manager, 1);
     }
 
     public Manager(BigInteger id, Manager manager, int version) {
-        this.id = id;
+        super(id);
         firstName = manager.firstName;
         lastName = manager.lastName;
         employees.addAll(manager.employees);
         this.version = version;
     }
 
-    public BigInteger getId() {
-        return id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -61,15 +59,6 @@ public class Manager implements IDable, Versionable {
         this.employees = employees;
     }
 
-    @Override
-    public int getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(int version) {
-        this.version = version;
-    }
 
     @Override
     public String toString() {
@@ -80,4 +69,27 @@ public class Manager implements IDable, Versionable {
                 ", employees=" + employees;
     }
 
+    public String getAttribute(String attributeName) {
+        switch (attributeName.toLowerCase()) {
+            case "first name":
+                return firstName;
+            case "last name":
+                return lastName;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    public void setAttribute(String attributeName, String attributeValue) {
+        switch (attributeName.toLowerCase()) {
+            case "first name":
+                firstName = attributeValue;
+                break;
+            case "last name":
+                lastName = attributeValue;
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
 }

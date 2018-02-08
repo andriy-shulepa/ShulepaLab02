@@ -1,32 +1,37 @@
-import Model.*;
+import Model.Project;
 import dao.DAOFactory;
 import dao.GenericDAO;
-import com.rits.cloning.*;
+import dao.IllegalRoleException;
+import dao.oracle.OracleAbstractDAO;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 public class Main {
-    public static void main(String... args) {
-        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getCustomerDAO();
+    public static void main(String... args) throws IllegalRoleException {
+//        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getCustomerDAO(OracleAbstractDAO.Roles.Administrator);
 //        Customer customer = new Customer();
 //        customer.setName("Shulepa");
 //        customer.setDescription("The best customer ever");
+//        customerDAO.insert(customer);
 //        BigInteger customer_ID = new BigInteger("1201712031907090393");
 //        customer = customerDAO.getByPK(customer_ID);
 //        System.out.println(customer);
-//        Project project = new Project();
-//        project.setName("Mario");
-//        project.setCustomerId(customer_ID);
-//        Calendar startDate = new GregorianCalendar();
-//        startDate.set(2017,Calendar.DECEMBER, 29);
-//        project.setStartDate(startDate);
-//        Calendar endDate = new GregorianCalendar();
-//        endDate.set(2018,Calendar.NOVEMBER,29);
-//        project.setEndDate(endDate);
-//        GenericDAO<Project> projectDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getProjectDAO();
-//        BigInteger project_ID = projectDAO.insert(project);
+        Project project = new Project();
+        project.setName("Diablo");
+        project.setCustomerId(new BigInteger("1201801290952292791"));
+        Calendar startDate = new GregorianCalendar();
+        startDate.set(2015, Calendar.FEBRUARY, 1);
+        project.setStartDate(startDate);
+        Calendar endDate = new GregorianCalendar();
+        endDate.set(2020, Calendar.AUGUST, 1);
+        project.setEndDate(endDate);
+        GenericDAO<Project> projectDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getProjectDAO(OracleAbstractDAO.Roles.Administrator);
+        BigInteger projectID = projectDAO.insert(project);
+        Project project1 = projectDAO.getByPK(projectID);
+        System.out.println(project1);
 //        Set<Customer> customers = customerDAO.getAll();
 //        for (Customer c:customers) {
 //            System.out.println(c);
@@ -41,7 +46,7 @@ public class Main {
 //        for (Customer c:customers) {
 //            System.out.println(c);
 //        }
-    //    GenericDAO<Sprint> sprintDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getSprintDAO();
+        //    GenericDAO<Sprint> sprintDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getSprintDAO();
 //        Sprint sprint = new Sprint();
 //        sprint.setProjectId(new BigInteger("1201712031922255322"));
 //        sprint.setName("First Sprint");
@@ -72,9 +77,16 @@ public class Main {
 //        BigInteger employeeID = employeeDAO.insert(employee);
 //        System.out.println(employeeDAO.getByPK(employeeID));
 
-BigInteger bigInteger = new BigInteger("1231");
-        System.out.println(bigInteger);
+//        Employee employee = new Employee();
+//        employee.setAttribute("first name", "Andriy");
+//        employee.setAttribute("last name", "Shulepa");
+//        employee.setAttribute("manager ID", "123");
+//
+//        System.out.println(employee);
+//        System.out.println(employee.getAttribute("manager Id"));
+//        System.out.println("select ot.write \"Object Type Grant\", o.write \"Object Grant\" \n" +
+//                "from lab02.object_type_grants ot\n" +
+//                "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
+//                "where ot.role = '" + "Administrator" + "'  and ot.OBJECT_TYPE_ID = (Select object_type_id from lab02.object_types where name ='" + "Project" + "')");
     }
-
-
 }

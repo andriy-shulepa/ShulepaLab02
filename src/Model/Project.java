@@ -1,36 +1,37 @@
 package Model;
 
-import dao.IDable;
-import dao.Versionable;
-
 import java.math.BigInteger;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Set;
 
-public class Project implements IDable, Versionable {
-    private BigInteger id;
-    private String name;
+public class Project extends AbstractDAOObject {
+    static {
+        attributes.add("Name");
+        attributes.add("Start Date");
+        attributes.add("End Date");
+        attributes.add("Customer ID");
+    }
+
     private Calendar startDate;
     private Calendar endDate;
     private BigInteger customerId;
     private Set<BigInteger> sprints;
-    private int version;
 
     public Project() {
-        version =1;
+        super();
     }
 
     public Project(BigInteger id) {
-        this.id = id;
-        version =1;
+        super(id);
     }
 
     public Project(BigInteger id, Project project) {
-        this(id,project,1);
+        this(id, project, 1);
     }
 
     public Project(BigInteger id, Project project, int version) {
-        this.id = id;
+        super(id);
         name = project.name;
         startDate = (Calendar) project.startDate.clone();
         endDate = (Calendar) project.endDate.clone();
@@ -45,18 +46,6 @@ public class Project implements IDable, Versionable {
 
     public void setSprints(Set<BigInteger> sprints) {
         this.sprints = sprints;
-    }
-
-    public BigInteger getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Calendar getStartDate() {
@@ -84,16 +73,6 @@ public class Project implements IDable, Versionable {
     }
 
     @Override
-    public int getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    @Override
     public String toString() {
         return "Project with Name = " + name +
                 ", Start Date = " + getDate(startDate) +
@@ -108,4 +87,46 @@ public class Project implements IDable, Versionable {
                 calendar.get(Calendar.YEAR));
     }
 
+    private Calendar getCalendar(String date) {
+        String[] arr = date.split("/");
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(Integer.parseInt(arr[2]), Integer.parseInt(arr[1]) - 1, Integer.parseInt(arr[0]));
+        return calendar;
+    }
+
+    @Override
+    public String getAttribute(String attributeName) {
+        switch (attributeName.toLowerCase()) {
+            case "name":
+                return name;
+            case "customer id":
+                return customerId.toString();
+            case "start date":
+                return getDate(startDate);
+            case "end date":
+                return getDate(endDate);
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public void setAttribute(String attributeName, String attributeValue) {
+        switch (attributeName.toLowerCase()) {
+            case "name":
+                name = attributeValue;
+                break;
+            case "customer id":
+                customerId = new BigInteger(attributeValue);
+                break;
+            case "start date":
+                startDate = getCalendar(attributeValue);
+                break;
+            case "end date":
+                endDate = getCalendar(attributeValue);
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
 }

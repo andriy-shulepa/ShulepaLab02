@@ -1,56 +1,48 @@
 package Model;
 
-import dao.IDable;
-import dao.Versionable;
-
 import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Set;
 
-public class Task implements IDable, Versionable {
-    private BigInteger id;
-    private String name;
+public class Task extends AbstractDAOObject {
+    static {
+        attributes.add("Name");
+        attributes.add("Sprint ID");
+        attributes.add("Parent Task ID");
+        attributes.add("Estimate");
+        attributes.add("Qualification");
+        attributes.add("Employee ID");
+    }
+
     private BigInteger sprintId;
     private BigInteger parentTaskId;
     private Set<BigInteger> subtasks;
-    private Calendar estimate;
+    private int estimate;
     private Qualification qualification;
     private Set<BigInteger> employees;
-    private int version;
 
     public Task() {
-        version =1;
+        super();
     }
 
     public Task(BigInteger id) {
-        this.id = id;
-        version =1;
+        super(id);
     }
+
     public Task(BigInteger id, Task task) {
-        this(id,task,1);
+        this(id, task, 1);
     }
+
     public Task(BigInteger id, Task task, int version) {
-        this.id = id;
+        super(id);
         name = task.name;
-        sprintId=task.sprintId;
+        sprintId = task.sprintId;
         subtasks.addAll(task.subtasks);
-        estimate=(Calendar) task.estimate.clone();
-        qualification=task.qualification;
+        estimate = task.estimate;
+        qualification = task.qualification;
         employees.addAll(task.employees);
         this.version = version;
     }
 
-    public BigInteger getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public BigInteger getSprintId() {
         return sprintId;
@@ -76,11 +68,11 @@ public class Task implements IDable, Versionable {
         this.subtasks = subtasks;
     }
 
-    public Calendar getEstimate() {
+    public int getEstimate() {
         return estimate;
     }
 
-    public void setEstimate(Calendar estimate) {
+    public void setEstimate(int estimate) {
         this.estimate = estimate;
     }
 
@@ -100,18 +92,58 @@ public class Task implements IDable, Versionable {
         this.employees = employees;
     }
 
-    @Override
-    public int getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(int version) {
-        this.version = version;
-    }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Task with " +
+                "id = " + id +
+                ", name = " + name +
+                ", parent task ID = " + parentTaskId +
+                ", estimate = " + estimate +
+                ", needed qualification  = " + qualification +
+                ", subtasks = " + subtasks +
+                ", employees" + employees;
+    }
+
+
+    @Override
+    public String getAttribute(String attributeName) {
+        switch (attributeName.toLowerCase()) {
+            case "name":
+                return name;
+            case "sprint id":
+                return sprintId.toString();
+            case "parent task id":
+                return parentTaskId.toString();
+            case "estimate":
+                return Integer.toString(estimate);
+            case "qualification":
+                return qualification.toString();
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public void setAttribute(String attributeName, String attributeValue) {
+        switch (attributeName.toLowerCase()) {
+            case "name":
+                name = attributeValue;
+                break;
+            case "sprint id":
+                sprintId = new BigInteger(attributeValue);
+                break;
+            case "parent task id":
+                parentTaskId = new BigInteger(attributeValue);
+                break;
+            case "estimate":
+                estimate = Integer.parseInt(attributeValue);
+                break;
+            case "qualification":
+                qualification = Qualification.valueOf(attributeValue);
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 }

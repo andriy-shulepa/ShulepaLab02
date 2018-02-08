@@ -1,34 +1,35 @@
 package Model;
 
-import dao.IDable;
-import dao.Versionable;
-
 import java.math.BigInteger;
 import java.util.Set;
 
-public class Employee implements IDable, Versionable {
-    private BigInteger id;
+public class Employee extends AbstractDAOObject {
+    static {
+        attributes.add("First Name");
+        attributes.add("Last Name");
+        attributes.add("Manager ID");
+        attributes.add("Task ID");
+    }
+
     private String firstName;
     private String lastName;
     private BigInteger managerId;
     private Set<BigInteger> tasks;
-    private int version;
 
     public Employee() {
-        version =1;
+        super();
     }
 
     public Employee(BigInteger id) {
-        this.id = id;
-        version = 1;
+        super(id);
     }
 
     public Employee(BigInteger id, Employee employee) {
-        this(id,employee,1);
+        this(id, employee, 1);
     }
 
     public Employee(BigInteger id, Employee employee, int version) {
-        this.id = id;
+        super(id);
         firstName = employee.firstName;
         lastName = employee.lastName;
         managerId = new BigInteger(employee.managerId.toString());
@@ -73,16 +74,6 @@ public class Employee implements IDable, Versionable {
     }
 
     @Override
-    public int getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    @Override
     public String toString() {
         return "Employee with " +
                 "id=" + id +
@@ -90,6 +81,43 @@ public class Employee implements IDable, Versionable {
                 ", Last Name='" + lastName + '\'' +
                 ", manager Id=" + managerId +
                 ", tasks=" + tasks;
+    }
+
+    public String getAttribute(String attributeName) {
+        switch (attributeName.toLowerCase()) {
+            case "first name":
+                return firstName;
+            case "last name":
+                return lastName;
+            case "manager id":
+                return managerId.toString();
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    public void setAttribute(String attributeName, String attributeValue) {
+        switch (attributeName.toLowerCase()) {
+            case "first name":
+                firstName = attributeValue;
+                break;
+            case "last name":
+                lastName = attributeValue;
+                break;
+            case "manager id":
+                managerId = new BigInteger(attributeValue);
+                break;
+            case "task id":
+                tasks.add(new BigInteger(attributeValue));
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
 }
