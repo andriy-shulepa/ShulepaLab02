@@ -1,12 +1,10 @@
-import Model.Project;
+import Model.Customer;
 import dao.DAOFactory;
 import dao.GenericDAO;
 import dao.IllegalRoleException;
 import dao.oracle.OracleAbstractDAO;
 
 import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 
 public class Main {
@@ -19,19 +17,19 @@ public class Main {
 //        BigInteger customer_ID = new BigInteger("1201712031907090393");
 //        customer = customerDAO.getByPK(customer_ID);
 //        System.out.println(customer);
-        Project project = new Project();
-        project.setName("Diablo");
-        project.setCustomerId(new BigInteger("1201801290952292791"));
-        Calendar startDate = new GregorianCalendar();
-        startDate.set(2015, Calendar.FEBRUARY, 1);
-        project.setStartDate(startDate);
-        Calendar endDate = new GregorianCalendar();
-        endDate.set(2020, Calendar.AUGUST, 1);
-        project.setEndDate(endDate);
-        GenericDAO<Project> projectDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getProjectDAO(OracleAbstractDAO.Roles.Administrator);
-        BigInteger projectID = projectDAO.insert(project);
-        Project project1 = projectDAO.getByPK(projectID);
-        System.out.println(project1);
+//        Project project = new Project();
+//        project.setName("Diablo");
+//        project.setCustomerId(new BigInteger("1201801290952292791"));
+//        Calendar startDate = new GregorianCalendar();
+//        startDate.set(2015, Calendar.FEBRUARY, 1);
+//        project.setStartDate(startDate);
+//        Calendar endDate = new GregorianCalendar();
+//        endDate.set(2020, Calendar.AUGUST, 1);
+//        project.setEndDate(endDate);
+//        GenericDAO<Project> projectDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getProjectDAO(OracleAbstractDAO.Roles.Administrator);
+//        BigInteger projectID = projectDAO.insert(project);
+//        Project project1 = projectDAO.getByPK(projectID);
+//        System.out.println(project1);
 //        Set<Customer> customers = customerDAO.getAll();
 //        for (Customer c:customers) {
 //            System.out.println(c);
@@ -88,5 +86,22 @@ public class Main {
 //                "from lab02.object_type_grants ot\n" +
 //                "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
 //                "where ot.role = '" + "Administrator" + "'  and ot.OBJECT_TYPE_ID = (Select object_type_id from lab02.object_types where name ='" + "Project" + "')");
+        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.XML).getCustomerDAO(OracleAbstractDAO.Roles.Administrator);
+//        Set<Customer>customers = customerDAO.getAll();
+//        for(Customer customer:customers) {
+//            System.out.println(customer);
+//        }
+//        Customer customer = new Customer();
+//        customer.setName("ParamPamPam");
+//        customer.setDescription("Place for your ad");
+//        Set<BigInteger> projects = new HashSet<>();
+//        projects.add(new BigInteger("777"));
+//        projects.add(new BigInteger("888"));
+//        projects.add(new BigInteger("999"));
+//        customer.setProjects(projects);
+//        customerDAO.insert(customer);
+        Customer customer = customerDAO.getByPK(new BigInteger("1201802151454506979"));
+        customerDAO.delete(customer);
     }
 }
+

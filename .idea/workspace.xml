@@ -1,76 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afd0471b-f4a7-4af9-85f0-914c7e626fe8" name="Default" comment="Improve lab">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/objenesis-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/AbstractDAOObject.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/Attributable.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cloning-master.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/binary/BinaryDAOFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/collectoins/CustomerAbsractDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/dao_interfaces/CustomerDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/dao_interfaces/EmployeeDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/dao_interfaces/ManagerDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/dao_interfaces/ProjectDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/dao_interfaces/SprintDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/dao_interfaces/TaskDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/json/JSONDAOFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/IDable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/xml/XMLDAOFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/binary/BinaryDAOFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/dao_interfaces/CustomerDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/dao_interfaces/EmployeeDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/dao_interfaces/ManagerDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/dao_interfaces/ProjectDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/dao_interfaces/SprintDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/dao_interfaces/TaskDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/json/JSONDAOFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dao/xml/XMLDAOFactory.java" afterPath="" />
+    <list default="true" id="afd0471b-f4a7-4af9-85f0-914c7e626fe8" name="Default" comment="Implemented XML DAO">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jdom-2.0.6.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/CustomerDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/EmployeeDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/ManagerDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/ProjectDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/SprintDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/TaskDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/XMLAbstractDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/xml/XMLDAOFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xml_files/customers.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xml_files/employees.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xml_files/managers.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xml_files/projects.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xml_files/sprints.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xml_files/tasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Main.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Customer.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Customer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Employee.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Employee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Manager.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Manager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Project.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Project.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Sprint.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Sprint.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Task.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/Model/Task.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/DAOFactory$1.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/DAOFactory$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/DAOFactory$DAOTypes.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/DAOFactory$DAOTypes.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/DAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/GenericDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/GenericDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/ObjectContainer.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/ObjectContainer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/collectoins/CollectionsAbsractDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/collectoins/CollectionsAbsractDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/collectoins/CollectionsDAOFactory.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/collectoins/CollectionsDAOFactory.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/CustomerDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/CustomerDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/EmployeeDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/EmployeeDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/ManagerDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/ManagerDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/OracleAbstractDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/OracleAbstractDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/OracleDAOFactory.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/OracleDAOFactory.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/ProjectDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/ProjectDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/SprintDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/SprintDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/TaskDAO.class" afterPath="$PROJECT_DIR$/out/production/ShulepaLab02/dao/oracle/TaskDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/04fc4391-dab2-4f7d-8b20-c323c4ca9185.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/04fc4391-dab2-4f7d-8b20-c323c4ca9185.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShulepaLab02.iml" afterPath="$PROJECT_DIR$/ShulepaLab02.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Customer.java" afterPath="$PROJECT_DIR$/src/Model/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Employee.java" afterPath="$PROJECT_DIR$/src/Model/Employee.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Manager.java" afterPath="$PROJECT_DIR$/src/Model/Manager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Project.java" afterPath="$PROJECT_DIR$/src/Model/Project.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Sprint.java" afterPath="$PROJECT_DIR$/src/Model/Sprint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Task.java" afterPath="$PROJECT_DIR$/src/Model/Task.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/DAOFactory.java" afterPath="$PROJECT_DIR$/src/dao/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/IDable.java" afterPath="$PROJECT_DIR$/src/dao/IDable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/ObjectContainer.java" afterPath="$PROJECT_DIR$/src/dao/ObjectContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/Versionable.java" afterPath="$PROJECT_DIR$/src/dao/Versionable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/collectoins/CollectionsAbsractDAO.java" afterPath="$PROJECT_DIR$/src/dao/collectoins/CollectionsAbsractDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/SprintDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/SprintDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/oracle/TaskDAO.java" afterPath="$PROJECT_DIR$/src/dao/oracle/TaskDAO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -123,104 +88,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OracleAbstractDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java">
+      <file leaf-file-name="employees.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xml_files/employees.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1387">
-              <caret line="341" column="24" lean-forward="false" selection-start-line="341" selection-start-column="24" selection-end-line="341" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1517873670357" expanded="true" signature="617:978" ph="select ot.re... object_type_grants" />
-                <marker date="1517873670357" expanded="true" signature="894:977" ph="select objec... object_types" />
-                <marker date="1517873670357" expanded="true" signature="1025:1388" ph="select ot.wr... object_type_grants" />
-                <marker date="1517873670357" expanded="true" signature="1304:1387" ph="Select objec... object_types" />
-                <marker date="1517873670357" expanded="true" signature="12171:12744" ph="select o.obj... objects" />
-                <marker date="1517873670357" expanded="true" signature="12308:12381" ph="Select objec... object_types" />
-                <marker date="1517873670357" expanded="true" signature="12570:12643" ph="Select objec... object_types" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="1" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SprintDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/SprintDAO.java">
+      <file leaf-file-name="sprints.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xml_files/sprints.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskDAO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/TaskDAO.java">
+      <file leaf-file-name="tasks.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xml_files/tasks.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmployeeDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagerDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Customer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#768#769#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="1" column="15" lean-forward="false" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -260,20 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Model/Qualification.java" />
-        <option value="$PROJECT_DIR$/src/DAO/DAOFactory.java" />
-        <option value="$PROJECT_DIR$/src/dao/dao_interfaces/ProjectDAO.java" />
-        <option value="$PROJECT_DIR$/src/dao/dao_interfaces/SprintDAO.java" />
-        <option value="$PROJECT_DIR$/src/dao/dao_interfaces/GenericDAO.java" />
-        <option value="$PROJECT_DIR$/src/dao/oracle/Sprint.java" />
-        <option value="$PROJECT_DIR$/src/dao/binary/BinaryDAOFactory.java" />
-        <option value="$PROJECT_DIR$/src/dao/json/JSONDAOFactory.java" />
-        <option value="$PROJECT_DIR$/src/dao/xml/XMLDAOFactory.java" />
-        <option value="$PROJECT_DIR$/cloning-master/src/main/java/com/rits/cloning/ObjenesisInstantiationStrategy.java" />
-        <option value="$PROJECT_DIR$/src/com/rits/cloning/IInstantiationStrategy.java" />
-        <option value="$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/ObjenesisInstantiationStrategy.java" />
-        <option value="$PROJECT_DIR$/src/dao/oracle/IDable.java" />
-        <option value="$PROJECT_DIR$/src/dao/collectoins/CollectionsDAO.java" />
         <option value="$PROJECT_DIR$/src/dao/DAOUtils.java" />
         <option value="$PROJECT_DIR$/src/dao/collectoins/CustomerAbsractDAO.java" />
         <option value="$PROJECT_DIR$/src/dao/collectoins/CustomerDAO.java" />
@@ -287,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/dao/collectoins/CollectionsDAOFactory.java" />
         <option value="$PROJECT_DIR$/src/dao/IllegalRoleException.java" />
         <option value="$PROJECT_DIR$/src/dao/GenericDAO.java" />
-        <option value="$PROJECT_DIR$/src/dao/DAOFactory.java" />
         <option value="$PROJECT_DIR$/TODO list" />
         <option value="$PROJECT_DIR$/src/dao/IDable.java" />
         <option value="$PROJECT_DIR$/src/dao/Versionable.java" />
@@ -300,9 +177,7 @@
         <option value="$PROJECT_DIR$/src/Model/Employee.java" />
         <option value="$PROJECT_DIR$/lib/cloning-1.9.9.jar!/com/rits/cloning/Cloner.class" />
         <option value="$PROJECT_DIR$/src/Model/AbstractDAOObject.java" />
-        <option value="$PROJECT_DIR$/src/Model/Project.java" />
         <option value="$PROJECT_DIR$/src/Model/Sprint.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java" />
         <option value="$PROJECT_DIR$/src/Model/Customer.java" />
         <option value="$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java" />
@@ -311,6 +186,23 @@
         <option value="$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java" />
         <option value="$PROJECT_DIR$/src/dao/oracle/SprintDAO.java" />
         <option value="$PROJECT_DIR$/src/dao/oracle/TaskDAO.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/XMLDAOFactory.java" />
+        <option value="$PROJECT_DIR$/src/dao/DAOFactory.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/CustomerDAO.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/XMLAbstractDAO.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/EmployeeDAO.java" />
+        <option value="$PROJECT_DIR$/src/Model/Project.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/ProjectDAO.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/ManagerDAO.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/TaskDAO.java" />
+        <option value="$PROJECT_DIR$/src/dao/xml/SprintDAO.java" />
+        <option value="$PROJECT_DIR$/xml_files/employees.xml" />
+        <option value="$PROJECT_DIR$/xml_files/customers.xml" />
+        <option value="$PROJECT_DIR$/xml_files/managers.xml" />
+        <option value="$PROJECT_DIR$/xml_files/projects.xml" />
+        <option value="$PROJECT_DIR$/xml_files/sprints.xml" />
+        <option value="$PROJECT_DIR$/xml_files/tasks.xml" />
       </list>
     </option>
   </component>
@@ -361,10 +253,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -399,7 +289,19 @@
               <item name="ShulepaLab02" type="b2602c69:ProjectViewProjectNode" />
               <item name="ShulepaLab02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ShulepaLab02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ShulepaLab02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ShulepaLab02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ShulepaLab02" type="462c0819:PsiDirectoryNode" />
+              <item name="xml_files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ShulepaLab02" type="b2602c69:ProjectViewProjectNode" />
@@ -409,12 +311,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jdom-2.0.6.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -424,8 +328,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="dao" />
@@ -445,6 +349,25 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="CustomerDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="dao.xml.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="dao.xml.CustomerDAO" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ShulepaLab02" />
+      <envs />
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -540,9 +463,14 @@
       <properties />
       <listeners />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="Application.CustomerDAO" />
+    </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.CustomerDAO" />
       </list>
     </recent_temporary>
   </component>
@@ -604,7 +532,13 @@
       <workItem from="1517761375416" duration="595000" />
       <workItem from="1517816096106" duration="2857000" />
       <workItem from="1517867436355" duration="5807000" />
-      <workItem from="1518119169095" duration="220000" />
+      <workItem from="1518119169095" duration="443000" />
+      <workItem from="1518255448816" duration="575000" />
+      <workItem from="1518261204805" duration="1650000" />
+      <workItem from="1518341349958" duration="552000" />
+      <workItem from="1518354819055" duration="3667000" />
+      <workItem from="1518418458884" duration="2165000" />
+      <workItem from="1518695704200" duration="8313000" />
     </task>
     <task id="LOCAL-00001" summary="Improve lab">
       <created>1513179799688</created>
@@ -613,11 +547,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513179799688</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Move main logic to AbstractDAO">
+      <created>1518119496899</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518119496899</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154636000" />
+    <option name="totallyTimeSpent" value="171781000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -630,10 +571,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="39" width="1305" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -644,8 +585,9 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2283214" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25218776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22195704" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -656,9 +598,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -698,14 +638,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Improve lab" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve lab" />
+    <MESSAGE value="Move main logic to AbstractDAO" />
+    <MESSAGE value="Implemented XML DAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented XML DAO" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dao/DAOFactory.java</url>
-          <line>20</line>
+          <line>22</line>
           <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
@@ -715,57 +660,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/Immutable.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/IFastCloner.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/CloningException.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/Cloner.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/CloningStrategyFactory.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/FastClonerArrayList.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/FastClonerCustomMap.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/FastClonerHashMap.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/FastClonerHashSet.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/FastClonerLinkedList.java" />
-    <entry file="file://$PROJECT_DIR$/lib/cloning-master/src/main/java/com/rits/cloning/FastClonerTreeMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/dao/collectoins/EmployeeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/collectoins/ManagerDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/collectoins/ProjectDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/collectoins/CollectionsDAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/collectoins/TaskDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleDAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -780,17 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/xml/XMLDAOFactory.java" />
-    <entry file="file://$PROJECT_DIR$/src/dao/DAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,13 +717,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/dao_interfaces/CustomerDAO.java" />
-    <entry file="file://$PROJECT_DIR$/src/dao/DAOUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="8" column="51" lean-forward="false" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/f080295e/04fc4391-dab2-4f7d-8b20-c323c4ca9185/LAB02.ATTRIBUTES">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -895,7 +775,7 @@
         <state relative-caret-position="216">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,6 +784,138 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="43" column="83" lean-forward="false" selection-start-line="43" selection-start-column="83" selection-end-line="43" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/TaskDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/collectoins/ProjectDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/SprintDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/DAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="55" lean-forward="false" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleDAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-269">
+          <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/XMLDAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#258#259#0" expanded="false" />
+            <element signature="e#298#299#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/products.xml" />
+    <entry file="file://$PROJECT_DIR$/src/dao/DAOUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="19" column="65" lean-forward="false" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3726">
+          <caret line="92" column="23" lean-forward="false" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+          <folding>
+            <marker date="1518119468076" expanded="true" signature="617:978" ph="select ot.re... object_type_grants" />
+            <marker date="1518119468076" expanded="true" signature="894:977" ph="select objec... object_types" />
+            <marker date="1518119468076" expanded="true" signature="1025:1388" ph="select ot.wr... object_type_grants" />
+            <marker date="1518119468076" expanded="true" signature="1304:1387" ph="Select objec... object_types" />
+            <marker date="1518119468076" expanded="true" signature="12170:12759" ph="select o.obj... objects" />
+            <marker date="1518119468076" expanded="true" signature="12307:12384" ph="Select objec... object_types" />
+            <marker date="1518119468076" expanded="true" signature="12573:12650" ph="Select objec... object_types" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="108" column="35" lean-forward="false" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+          <folding>
+            <marker date="1518704977401" expanded="true" signature="4943:5362" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/XMLAbstractDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2412">
+          <caret line="152" column="5" lean-forward="false" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -912,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        <state relative-caret-position="108">
+          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -926,113 +938,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/EmployeeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="46" column="8" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="58" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/CustomerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="44" column="8" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="55" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#570#571#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state relative-caret-position="1134">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Sprint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+        <state relative-caret-position="72">
+          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/ProjectDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="50" column="8" lean-forward="false" selection-start-line="50" selection-start-column="8" selection-end-line="63" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/SprintDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1722">
-          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        <state relative-caret-position="-738">
+          <caret line="90" column="33" lean-forward="false" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml_files/customers.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="true" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/ManagerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="54" column="9" lean-forward="false" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/dao/xml/TaskDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="648">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#768#769#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/CustomerDAO.java">
+    <entry file="file://$PROJECT_DIR$/xml_files/managers.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/EmployeeDAO.java">
+    <entry file="file://$PROJECT_DIR$/xml_files/projects.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="1" column="10" lean-forward="false" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/ManagerDAO.java">
+    <entry file="file://$PROJECT_DIR$/xml_files/employees.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="1" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/OracleAbstractDAO.java">
+    <entry file="file://$PROJECT_DIR$/xml_files/sprints.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1387">
-          <caret line="341" column="24" lean-forward="false" selection-start-line="341" selection-start-column="24" selection-end-line="341" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1517873670357" expanded="true" signature="617:978" ph="select ot.re... object_type_grants" />
-            <marker date="1517873670357" expanded="true" signature="894:977" ph="select objec... object_types" />
-            <marker date="1517873670357" expanded="true" signature="1025:1388" ph="select ot.wr... object_type_grants" />
-            <marker date="1517873670357" expanded="true" signature="1304:1387" ph="Select objec... object_types" />
-            <marker date="1517873670357" expanded="true" signature="12171:12744" ph="select o.obj... objects" />
-            <marker date="1517873670357" expanded="true" signature="12308:12381" ph="Select objec... object_types" />
-            <marker date="1517873670357" expanded="true" signature="12570:12643" ph="Select objec... object_types" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/ProjectDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/SprintDAO.java">
+    <entry file="file://$PROJECT_DIR$/xml_files/tasks.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/oracle/TaskDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        <state relative-caret-position="18">
+          <caret line="1" column="15" lean-forward="false" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
           <folding />
         </state>
       </provider>

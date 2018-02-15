@@ -87,13 +87,6 @@ public class Project extends AbstractDAOObject {
                 calendar.get(Calendar.YEAR));
     }
 
-    private Calendar getCalendar(String date) {
-        String[] arr = date.split("/");
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(Integer.parseInt(arr[2]), Integer.parseInt(arr[1]) - 1, Integer.parseInt(arr[0]));
-        return calendar;
-    }
-
     @Override
     public String getAttribute(String attributeName) {
         switch (attributeName.toLowerCase()) {
@@ -102,9 +95,9 @@ public class Project extends AbstractDAOObject {
             case "customer id":
                 return customerId.toString();
             case "start date":
-                return getDate(startDate);
+                return Long.toString(startDate.getTimeInMillis());
             case "end date":
-                return getDate(endDate);
+                return Long.toString(endDate.getTimeInMillis());
             default:
                 throw new IllegalArgumentException();
         }
@@ -120,10 +113,12 @@ public class Project extends AbstractDAOObject {
                 customerId = new BigInteger(attributeValue);
                 break;
             case "start date":
-                startDate = getCalendar(attributeValue);
+                startDate = new GregorianCalendar();
+                startDate.setTimeInMillis(Long.parseLong(attributeValue));
                 break;
             case "end date":
-                endDate = getCalendar(attributeValue);
+                endDate = new GregorianCalendar();
+                endDate.setTimeInMillis(Long.parseLong(attributeValue));
                 break;
             default:
                 throw new IllegalArgumentException();

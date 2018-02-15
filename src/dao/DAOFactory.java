@@ -4,6 +4,7 @@ import Model.*;
 import dao.collectoins.CollectionsDAOFactory;
 import dao.oracle.OracleAbstractDAO;
 import dao.oracle.OracleDAOFactory;
+import dao.xml.XMLDAOFactory;
 
 //import dao.binary.BinaryDAOFactory;
 //import dao.json.JSONDAOFactory;
@@ -21,7 +22,7 @@ public abstract class DAOFactory {
             case JSON:
                 //               return new JSONDAOFactory();
             case XML:
-                //               return new XMLDAOFactory();
+                return new XMLDAOFactory();
             default:
                 return null;
         }

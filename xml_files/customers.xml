@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+    <customer>
+        <id>1234</id>
+        <name>Shulepa</name>
+        <description>The best customer ever</description>
+        <projects>
+            <id>111</id>
+            <id>222</id>
+            <id>333</id>
+        </projects>
+    </customer>
+    <customer>
+        <id>1212</id>
+        <name>Santa</name>
+        <description>The best customer ever</description>
+        <projects>
+            <id>123</id>
+            <id>231</id>
+            <id>312</id>
+        </projects>
+    </customer>
+    <customer>
+        <id>1201802120921074751</id>
+        <name>BlahBlah</name>
+        <description>Place for your ad</description>
+        <projects>
+            <id>666</id>
+            <id>555</id>
+            <id>444</id>
+        </projects>
+    </customer>
+</customers>
