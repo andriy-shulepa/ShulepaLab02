@@ -14,26 +14,26 @@ public class XMLDAOFactory extends DAOFactory {
 
     @Override
     public GenericDAO<Employee> getEmployeeDAO(OracleAbstractDAO.Roles role) {
-        return null;
+        return new EmployeeDAO();
     }
 
     @Override
     public GenericDAO<Manager> getManagerDAO(OracleAbstractDAO.Roles role) {
-        return null;
+        return new ManagerDAO();
     }
 
     @Override
     public GenericDAO<Project> getProjectDAO(OracleAbstractDAO.Roles role) {
-        return null;
+        return new ProjectDAO();
     }
 
     @Override
     public GenericDAO<Sprint> getSprintDAO(OracleAbstractDAO.Roles role) {
-        return null;
+        return new SprintDAO();
     }
 
     @Override
     public GenericDAO<Task> getTaskDAO(OracleAbstractDAO.Roles role) {
-        return null;
+        return new TaskDAO();
     }
 }
