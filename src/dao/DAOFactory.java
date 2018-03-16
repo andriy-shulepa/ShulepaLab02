@@ -2,6 +2,7 @@ package dao;
 
 import Model.*;
 import dao.collectoins.CollectionsDAOFactory;
+import dao.json.JsonDAOFactory;
 import dao.oracle.OracleAbstractDAO;
 import dao.oracle.OracleDAOFactory;
 import dao.xml.XMLDAOFactory;
@@ -20,7 +21,7 @@ public abstract class DAOFactory {
             case BINARY:
 //                return new BinaryDAOFactory();
             case JSON:
-                //               return new JSONDAOFactory();
+                return new JsonDAOFactory();
             case XML:
                 return new XMLDAOFactory();
             default:

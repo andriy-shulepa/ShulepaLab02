@@ -9,14 +9,14 @@ import java.math.BigInteger;
 
 public class Main {
     public static void main(String... args) throws IllegalRoleException {
-//        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.ORACLE).getCustomerDAO(OracleAbstractDAO.Roles.Administrator);
-//        Customer customer = new Customer();
-//        customer.setName("Shulepa");
-//        customer.setDescription("The best customer ever");
-//        customerDAO.insert(customer);
-//        BigInteger customer_ID = new BigInteger("1201712031907090393");
-//        customer = customerDAO.getByPK(customer_ID);
-//        System.out.println(customer);
+        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.JSON).getCustomerDAO(OracleAbstractDAO.Roles.Administrator);
+        Customer customer = new Customer();
+        customer.setName("Shulepa2");
+        customer.setDescription("The best customer ever");
+        BigInteger customer_ID = customerDAO.insert(customer);
+//        BigInteger customer_ID = new BigInteger("1201802201931075496");
+        customer = customerDAO.getByPK(customer_ID);
+        System.out.println(customer);
 //        Project project = new Project();
 //        project.setName("Diablo");
 //        project.setCustomerId(new BigInteger("1201801290952292791"));
@@ -86,7 +86,7 @@ public class Main {
 //                "from lab02.object_type_grants ot\n" +
 //                "left join LAB02.OBJECT_GRANTS o on ot.role =o.role and o.OBJECT_ID =?\n" +
 //                "where ot.role = '" + "Administrator" + "'  and ot.OBJECT_TYPE_ID = (Select object_type_id from lab02.object_types where name ='" + "Project" + "')");
-        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.XML).getCustomerDAO(OracleAbstractDAO.Roles.Administrator);
+//        GenericDAO<Customer> customerDAO = DAOFactory.getDAOFactory(DAOFactory.DAOTypes.XML).getCustomerDAO(OracleAbstractDAO.Roles.Administrator);
 //        Set<Customer>customers = customerDAO.getAll();
 //        for(Customer customer:customers) {
 //            System.out.println(customer);
@@ -100,8 +100,8 @@ public class Main {
 //        projects.add(new BigInteger("999"));
 //        customer.setProjects(projects);
 //        customerDAO.insert(customer);
-        Customer customer = customerDAO.getByPK(new BigInteger("1201802151454506979"));
-        customerDAO.delete(customer);
+//        Customer customer = customerDAO.getByPK(new BigInteger("1201802151454506979"));
+//        customerDAO.delete(customer);
     }
 }
 

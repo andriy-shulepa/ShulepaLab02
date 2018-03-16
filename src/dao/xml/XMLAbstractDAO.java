@@ -1,7 +1,10 @@
 package dao.xml;
 
 import Model.AbstractDAOObject;
-import dao.*;
+import dao.Cache;
+import dao.DAOUtils;
+import dao.GenericDAO;
+import dao.OutdatedObjectVersionException;
 import org.jdom2.Element;
 import org.jdom2.input.DOMBuilder;
 import org.jdom2.output.Format;
@@ -45,7 +48,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
     protected abstract Element createElementFromObject(E object, BigInteger id);
 
     @Override
-    public E getByPK(BigInteger id) throws IllegalRoleException {
+    public E getByPK(BigInteger id) {
         if (cache.isActual(id)) {
             return cache.get(id);
         }
@@ -69,7 +72,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
     }
 
     @Override
-    public Set<E> getAll() throws IllegalRoleException {
+    public Set<E> getAll() {
         org.jdom2.Document jdomDoc;
         Set<E> objectSet = new HashSet<>();
         try {
@@ -92,7 +95,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
     }
 
     @Override
-    public BigInteger insert(E object) throws IllegalRoleException {
+    public BigInteger insert(E object) {
         org.jdom2.Document jdomDoc;
         BigInteger id = null;
         try {
@@ -109,7 +112,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
     }
 
     @Override
-    public void update(E object) throws OutdatedObjectVersionException, IllegalRoleException {
+    public void update(E object) throws OutdatedObjectVersionException {
         if (!cache.isCorrectVersion(object)) {
             throw new OutdatedObjectVersionException();
         }
@@ -133,7 +136,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
     }
 
     @Override
-    public void delete(E object) throws IllegalRoleException {
+    public void delete(E object) {
         org.jdom2.Document jdomDoc;
         try {
             jdomDoc = useDOMParser(getFilePath());
