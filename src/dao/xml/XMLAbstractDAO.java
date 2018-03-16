@@ -1,10 +1,7 @@
 package dao.xml;
 
 import Model.AbstractDAOObject;
-import dao.DAOUtils;
-import dao.GenericDAO;
-import dao.IllegalRoleException;
-import dao.OutdatedObjectVersionException;
+import dao.*;
 import org.jdom2.Element;
 import org.jdom2.input.DOMBuilder;
 import org.jdom2.output.Format;
@@ -26,6 +23,7 @@ import java.util.Set;
 public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements GenericDAO<E> {
 
     static final String ID = "id";
+    private Cache<E> cache = new Cache<>();
 
     private static org.jdom2.Document useDOMParser(String fileName)
             throws ParserConfigurationException, SAXException, IOException {
@@ -48,6 +46,9 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
 
     @Override
     public E getByPK(BigInteger id) throws IllegalRoleException {
+        if (cache.isActual(id)) {
+            return cache.get(id);
+        }
         org.jdom2.Document jdomDoc;
         E object = null;
         try {
@@ -63,6 +64,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
         } catch (Exception e) {
             e.printStackTrace();
         }
+        cache.add(object);
         return object;
     }
 
@@ -81,6 +83,11 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        for (E item : objectSet) {
+            cache.add(item);
+        }
+
         return objectSet;
     }
 
@@ -103,6 +110,9 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
 
     @Override
     public void update(E object) throws OutdatedObjectVersionException, IllegalRoleException {
+        if (!cache.isCorrectVersion(object)) {
+            throw new OutdatedObjectVersionException();
+        }
         org.jdom2.Document jdomDoc;
         try {
             jdomDoc = useDOMParser(getFilePath());
@@ -116,6 +126,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
                 }
             }
             writeXMLDocument(jdomDoc);
+            cache.update(object);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -135,6 +146,7 @@ public abstract class XMLAbstractDAO<E extends AbstractDAOObject> implements Gen
                 }
             }
             writeXMLDocument(jdomDoc);
+            cache.remove(object);
         } catch (Exception e) {
             e.printStackTrace();
         }
