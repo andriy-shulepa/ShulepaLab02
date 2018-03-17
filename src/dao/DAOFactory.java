@@ -1,15 +1,13 @@
 package dao;
 
 import Model.*;
+import dao.binary.BinaryDAOFactory;
 import dao.collectoins.CollectionsDAOFactory;
 import dao.json.JsonDAOFactory;
 import dao.oracle.OracleAbstractDAO;
 import dao.oracle.OracleDAOFactory;
 import dao.xml.XMLDAOFactory;
 
-//import dao.binary.BinaryDAOFactory;
-//import dao.json.JSONDAOFactory;
-//import dao.xml.XMLDAOFactory;
 
 public abstract class DAOFactory {
     public static DAOFactory getDAOFactory(DAOTypes which) {
@@ -19,7 +17,7 @@ public abstract class DAOFactory {
             case COLLECTIONS:
                 return new CollectionsDAOFactory();
             case BINARY:
-//                return new BinaryDAOFactory();
+                return new BinaryDAOFactory();
             case JSON:
                 return new JsonDAOFactory();
             case XML:
