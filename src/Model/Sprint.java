@@ -1,18 +1,21 @@
 package Model;
 
 import java.math.BigInteger;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Sprint extends AbstractDAOObject {
     private BigInteger projectId;
     private BigInteger previousSprintId;
-    private Set<BigInteger> tasks;
-
     static {
         attributes.add("Name");
         attributes.add("Project ID");
         attributes.add("Previous Sprint ID");
+
+        foreignAttributes.add(new ForeignAttributeType("Tasks", "Sprint ID", "Task"));
     }
+
+    private Set<BigInteger> tasks = new LinkedHashSet<>();
 
     public Sprint() {
         super();
@@ -94,6 +97,9 @@ public class Sprint extends AbstractDAOObject {
                 break;
             case "previous sprint id":
                 previousSprintId = new BigInteger(attributeValue);
+                break;
+            case "tasks":
+                tasks = stringToSet(attributeValue);
                 break;
             default:
                 throw new IllegalArgumentException();

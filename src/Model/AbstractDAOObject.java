@@ -1,11 +1,16 @@
 package Model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.StringJoiner;
 
-public abstract class AbstractDAOObject {
+public abstract class AbstractDAOObject implements Serializable {
     static final Set<String> attributes = new LinkedHashSet<>();
+
+    static Set<ForeignAttributeType> foreignAttributes = new LinkedHashSet<>();
+
     BigInteger id;
     int version;
     String name;
@@ -35,6 +40,10 @@ public abstract class AbstractDAOObject {
         return attributes;
     }
 
+    public Set<ForeignAttributeType> getForeignAttributes() {
+        return foreignAttributes;
+    }
+
     public String getName() {
         return name;
     }
@@ -46,4 +55,22 @@ public abstract class AbstractDAOObject {
     public abstract String getAttribute(String attributeName);
 
     public abstract void setAttribute(String attributeName, String attributeValue);
+
+    Set<BigInteger> stringToSet(String toParse) {
+        String[] values = toParse.split(",");
+        Set<BigInteger> result = new LinkedHashSet<>();
+        for (String value : values) {
+            result.add(new BigInteger(value));
+        }
+        return result;
+    }
+
+    String setToString(Set<BigInteger> set) {
+        StringJoiner joiner = new StringJoiner(",");
+        for (BigInteger item : set) {
+            joiner.add(item.toString());
+        }
+
+        return joiner.toString();
+    }
 }

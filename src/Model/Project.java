@@ -3,6 +3,7 @@ package Model;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Project extends AbstractDAOObject {
@@ -11,12 +12,14 @@ public class Project extends AbstractDAOObject {
         attributes.add("Start Date");
         attributes.add("End Date");
         attributes.add("Customer ID");
+
+        foreignAttributes.add(new ForeignAttributeType("Sprints", "Project ID", "Sprint"));
     }
 
     private Calendar startDate;
     private Calendar endDate;
     private BigInteger customerId;
-    private Set<BigInteger> sprints;
+    private Set<BigInteger> sprints = new LinkedHashSet<>();
 
     public Project() {
         super();
@@ -120,6 +123,8 @@ public class Project extends AbstractDAOObject {
                 endDate = new GregorianCalendar();
                 endDate.setTimeInMillis(Long.parseLong(attributeValue));
                 break;
+            case "sprints":
+                sprints = stringToSet(attributeValue);
             default:
                 throw new IllegalArgumentException();
         }

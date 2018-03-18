@@ -1,6 +1,7 @@
 package Model;
 
 import java.math.BigInteger;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Employee extends AbstractDAOObject {
@@ -14,7 +15,7 @@ public class Employee extends AbstractDAOObject {
     private String firstName;
     private String lastName;
     private BigInteger managerId;
-    private Set<BigInteger> tasks;
+    private Set<BigInteger> tasks = new LinkedHashSet<>();
 
     public Employee() {
         super();
@@ -91,6 +92,8 @@ public class Employee extends AbstractDAOObject {
                 return lastName;
             case "manager id":
                 return managerId.toString();
+            case "task id":
+                return setToString(tasks);
             default:
                 throw new IllegalArgumentException();
         }

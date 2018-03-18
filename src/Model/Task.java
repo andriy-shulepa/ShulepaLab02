@@ -1,6 +1,7 @@
 package Model;
 
 import java.math.BigInteger;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Task extends AbstractDAOObject {
@@ -11,14 +12,16 @@ public class Task extends AbstractDAOObject {
         attributes.add("Estimate");
         attributes.add("Qualification");
         attributes.add("Employee ID");
+
+        foreignAttributes.add(new ForeignAttributeType("Subtasks", "Parent Task ID", "Task"));
     }
 
     private BigInteger sprintId;
     private BigInteger parentTaskId;
-    private Set<BigInteger> subtasks;
+    private Set<BigInteger> subtasks = new LinkedHashSet<>();
     private int estimate;
     private Qualification qualification;
-    private Set<BigInteger> employees;
+    private Set<BigInteger> employees = new LinkedHashSet<>();
 
     public Task() {
         super();
@@ -119,6 +122,8 @@ public class Task extends AbstractDAOObject {
                 return Integer.toString(estimate);
             case "qualification":
                 return qualification.toString();
+            case "employee id":
+                return setToString(employees);
             default:
                 throw new IllegalArgumentException();
         }
@@ -141,6 +146,9 @@ public class Task extends AbstractDAOObject {
                 break;
             case "qualification":
                 qualification = Qualification.valueOf(attributeValue);
+                break;
+            case "subtasks":
+                subtasks = stringToSet(attributeValue);
                 break;
             default:
                 throw new IllegalArgumentException();

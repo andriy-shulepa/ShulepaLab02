@@ -2,6 +2,7 @@ package dao.oracle;
 
 
 import Model.AbstractDAOObject;
+import Model.ForeignAttributeType;
 import dao.*;
 
 import java.math.BigDecimal;
@@ -10,10 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class OracleAbstractDAO<E extends AbstractDAOObject> implements GenericDAO<E> {
     private static final String TABLE_OBJECTS = "LAB02.OBJECTS";
@@ -33,7 +31,8 @@ public abstract class OracleAbstractDAO<E extends AbstractDAOObject> implements 
         if (cache.isActual(id)) {
             return cache.get(id);
         }
-        Set<E> set = null;
+        Set<E> set;
+        E object = null;
         String sql = getSelectQuery();
         sql += " WHERE o.object_id = ? \n" +
                 "ORDER BY p.attribute_id";
@@ -42,13 +41,17 @@ public abstract class OracleAbstractDAO<E extends AbstractDAOObject> implements 
             statement.setObject(1, id);
             ResultSet rs = statement.executeQuery();
             set = parseResultSet(rs);
+
+            if (set == null || set.size() == 0) {
+                return null;
+            }
+            object = set.iterator().next();
+            fillWithForeignAttributes(object);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (set == null || set.size() == 0) {
-            return null;
-        }
-        E object = set.iterator().next();
+
         cache.add(object);
         return object;
     }
@@ -61,23 +64,28 @@ public abstract class OracleAbstractDAO<E extends AbstractDAOObject> implements 
                 " where OBJECT_TYPE_ID = (select OBJECT_TYPE_ID" +
                 " from lab02.object_types" +
                 " where name = '" + getObjectType() + "') )");
-        Set<E> list = null;
+        Set<E> set = null;
         String sql = getSelectQuery();
         sql += " where o.object_type_id = (Select object_type_id from lab02.object_types where name ='" + getObjectType() + "')" +
                 " ORDER BY o.OBJECT_ID";
         try (Connection connection = OracleDAOFactory.createConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
-            list = parseResultSet(rs);
+            set = parseResultSet(rs);
+
+            for (E object : set) {
+                fillWithForeignAttributes(object);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (list != null) {
-            for (E item : list) {
+        if (set != null) {
+            for (E item : set) {
                 cache.add(item);
             }
         }
-        return list;
+        return set;
     }
 
     @Override
@@ -297,28 +305,44 @@ public abstract class OracleAbstractDAO<E extends AbstractDAOObject> implements 
         return queries;
     }
 
-//    public Set<BigInteger> selectMultipleAttribute(String fromTable, String foreignAttributeName, BigInteger id) {
-//        String query = "select o.object_id\n" +
-//                "from lab02.objects o\n" +
-//                "join lab02.attributes attr on attr.object_type_id = (Select object_type_id from lab02.object_types where name ='" + fromTable + "')\n" +
-//                "left join lab02.params p on p.attribute_id = attr.attribute_id\n" +
-//                " and p.object_id = o.object_id\n" +
-//                " where o.object_type_id = (Select object_type_id from lab02.object_types where name ='" + fromTable + "')\n" +
-//                " and attr.name = '" + foreignAttributeName + "' and p.VALUE = '" + id.toString() + "'";
-//
-//        Set<BigInteger> attributeSet = new HashSet<>();
-//        try (Connection connection = OracleDAOFactory.createConnection();
-//             PreparedStatement statement = connection.prepareStatement(query)) {
-//            ResultSet resultSet = statement.executeQuery();
-//
-//            while (resultSet.next()) {
-//                attributeSet.add(new BigInteger(resultSet.getString(1)));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return attributeSet;
-//    }
+    private void fillWithForeignAttributes(E object) {
+        Set<ForeignAttributeType> foreignAttributeTypes = object.getForeignAttributes();
+        for (ForeignAttributeType attributeType : foreignAttributeTypes) {
+            String values = selectForeignAttribute(attributeType.table, attributeType.relatedAttributeName, object.getId());
+            object.setAttribute(attributeType.attributeName, values);
+        }
+    }
+
+    private String selectForeignAttribute(String fromTable, String foreignAttributeName, BigInteger id) {
+        String query = getForeignAttributeQuery();
+
+        StringJoiner joiner = new StringJoiner(",");
+        try (Connection connection = OracleDAOFactory.createConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, fromTable);
+            statement.setString(2, foreignAttributeName);
+            statement.setString(3, id.toString());
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                joiner.add(resultSet.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return joiner.toString();
+    }
+
+    private String getForeignAttributeQuery() {
+        return "select o.object_id\n" +
+                "from lab02.objects o\n" +
+                "join lab02.attributes attr on o.object_type_id = (Select object_type_id from lab02.object_types where name = ?)\n" +
+                "left join lab02.params p on p.attribute_id = attr.attribute_id\n" +
+                " and p.object_id = o.object_id\n" +
+                " where attr.name = ? and p.VALUE = ?";
+    }
 
 
     private void checkWriteGrant(BigInteger id) throws IllegalRoleException {

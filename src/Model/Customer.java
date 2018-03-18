@@ -2,6 +2,7 @@ package Model;
 
 
 import java.math.BigInteger;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Customer extends AbstractDAOObject {
@@ -9,10 +10,12 @@ public class Customer extends AbstractDAOObject {
     static {
         attributes.add("Name");
         attributes.add("Description");
+
+        foreignAttributes.add(new ForeignAttributeType("Projects", "Customer ID", "Project"));
     }
 
     private String description;
-    private Set<BigInteger> projects;
+    private Set<BigInteger> projects = new LinkedHashSet<>();
 
     public Customer() {
         super();
@@ -79,8 +82,12 @@ public class Customer extends AbstractDAOObject {
             case "description":
                 description = attributeValue;
                 break;
+            case "projects":
+                projects = stringToSet(attributeValue);
+                break;
             default:
                 throw new IllegalArgumentException();
         }
     }
+
 }

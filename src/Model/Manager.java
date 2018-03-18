@@ -1,6 +1,7 @@
 package Model;
 
 import java.math.BigInteger;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Manager extends AbstractDAOObject {
@@ -8,11 +9,13 @@ public class Manager extends AbstractDAOObject {
     static {
         attributes.add("First Name");
         attributes.add("Last Name");
+
+        foreignAttributes.add(new ForeignAttributeType("Employees", "Manager ID", "Employee"));
     }
 
     private String firstName;
     private String lastName;
-    private Set<BigInteger> employees;
+    private Set<BigInteger> employees = new LinkedHashSet<>();
 
     public Manager() {
         super();
@@ -87,6 +90,9 @@ public class Manager extends AbstractDAOObject {
                 break;
             case "last name":
                 lastName = attributeValue;
+                break;
+            case "employees":
+                employees = stringToSet(attributeValue);
                 break;
             default:
                 throw new IllegalArgumentException();
